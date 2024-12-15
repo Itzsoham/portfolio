@@ -70,3 +70,9 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .sticky-nav {
+    @apply sticky top-0 z-10 backdrop-filter  backdrop-saturate-200 backdrop-blur-sm transition ease-in-out;
+  }
+}
