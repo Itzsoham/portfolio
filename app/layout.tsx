@@ -1,14 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 import React from "react";
 
 import Navbar from "@/components/navbar";
 import ThemeProvider from "@/context/Theme";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const OpenSans = localFont({
+  variable: "--font-open-sans",
+  src: "/fonts/OpenSansVF.ttf",
+  weight: "100 200 300 400 500 600 700 800 900",
 });
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} bg-white/60 antialiased dark:bg-zinc-900`}
+        className={`${OpenSans.variable} bg-white/60 antialiased dark:bg-zinc-900`}
       >
         <ThemeProvider
           attribute="class"
