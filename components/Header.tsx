@@ -2,56 +2,21 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className="mb-10 flex w-full flex-col items-start justify-between  md:flex-row md:space-x-14">
+    <div className="mb-5 flex w-full flex-col items-start justify-between  md:flex-row md:space-x-14">
       <div className="mt-6 flex flex-col md:w-3/4">
         <h1 className="mb-2 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
           Soham Maury
         </h1>
 
-        <div className="relative mb-5 flex-wrap items-center leading-7 text-zinc-700 dark:text-zinc-400">
-          Building
-          <a
-            className={
-              "mx-1 inline-block bg-gray-100 px-2 py-0 font-bold dark:bg-zinc-700  dark:text-white"
-            }
-            href="https://aceternity.com"
-            target="__blank"
-          >
-            Aceternity
-          </a>
-          ,
-          <a
-            className={
-              "mx-1 inline-block bg-gray-100 px-2 py-0 font-bold dark:bg-zinc-700 dark:text-white"
-            }
-            href="https://userogue.com"
-            target="__blank"
-          >
-            Rogue
-          </a>
-          other
-          <span className="cursor-pointer font-bold text-zinc-800 dark:text-zinc-200">
-            {" "}
-            cool things
-          </span>
+        <div className="relative mb-5 flex-wrap items-center text-lg leading-7 text-zinc-700 dark:text-zinc-400">
+          Full-Stack Developer crafting elegant solutions that inspire and and
+          deliver value.
         </div>
-        <p className="text-zinc-600 dark:text-zinc-500">
-          Senior Software Engineer building SaaS products and web apps. Find me
-          on{" "}
-          <a
-            href="https://twitter.com/mannupaaji"
-            className=" group relative inline-flex overflow-hidden font-bold  dark:text-zinc-400"
-            target="__blank"
-          >
-            <span className="relative">twitter</span>
-          </a>{" "}
-          for tech updates and memes.
-        </p>
       </div>
 
       <div className="relative order-first shrink p-4 md:order-last md:p-4">
         <a
-          href="https://twitter.com/mannupaaji"
+          href="https://bento.me/Itzsoham"
           target="__blank"
           className="relative  z-[5] block size-20 overflow-hidden rounded bg-white  shadow-xl ring-1 ring-slate-900/5"
         >
