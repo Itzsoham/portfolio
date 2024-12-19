@@ -2,6 +2,7 @@ import React from "react";
 import { RiHotelLine } from "react-icons/ri";
 
 import ProjectCard from "./cards/ProjectCard";
+import More from "./ui/More";
 import Title from "./ui/Title";
 
 const Projects = () => {
@@ -29,8 +30,16 @@ const Projects = () => {
           href="https://aceternity.com"
           icon={<RiHotelLine size={40} />}
           tags={["React", "Supabase", "TailwindCSS", "Full-Stack"]}
-        />
+        />{" "}
+        <ProjectCard
+          title="Royal Stay"
+          description="A badass hotel management system where you can book cabins, view amenities, and much more. Full-stack application with good charts and graphs."
+          href="https://aceternity.com"
+          icon={<RiHotelLine size={40} />}
+          tags={["React", "Supabase", "TailwindCSS", "Full-Stack"]}
+        />{" "}
       </div>
+      <More href="/projects" text="See More" />
     </div>
   );
 };

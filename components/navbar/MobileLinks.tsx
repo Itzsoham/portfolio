@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { links } from "@/constants";
+import { Links } from "@/constants";
 
 const MobileLinks = () => {
   const [open, setOpen] = useState(false);
@@ -37,16 +37,16 @@ const MobileLinks = () => {
   return (
     <div className="flex w-full flex-row items-center space-x-2">
       <button
-        onClick={() => handleClick(links[0].link)}
+        onClick={() => handleClick(Links[0].link)}
         className="relative rounded-lg p-1 text-sm text-gray-700 transition-all delay-150 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-900 sm:px-4 sm:py-2"
       >
-        {links[0]?.name}
+        {Links[0]?.name}
       </button>
       <button
-        onClick={() => handleClick(links[1].link)}
+        onClick={() => handleClick(Links[1].link)}
         className="relative rounded-lg p-1 text-sm text-gray-700 transition-all delay-150 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-900 sm:px-4 sm:py-2"
       >
-        {links[1]?.name}
+        {Links[1]?.name}
       </button>
 
       <button
@@ -77,7 +77,7 @@ const MobileLinks = () => {
             exit="exit"
             className="absolute inset-x-0 top-20 z-[999] mx-auto flex w-[90%]   flex-col divide-y rounded-lg bg-white p-4 shadow-xl dark:divide-gray-700 dark:bg-gray-800"
           >
-            {[...links].splice(2).map((el) => (
+            {[...Links].splice(2).map((el) => (
               <button
                 key={el?.link}
                 onClick={() => handleClick(el.link)}
