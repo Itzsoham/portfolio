@@ -37,22 +37,22 @@ const DATA = {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "#",
+        url: "https://github.com/itzsoham",
         icon: Github,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "#",
+        url: "https://www.linkedin.com/in/sohammaury/",
         icon: Linkedin,
       },
       X: {
         name: "X",
-        url: "#",
+        url: "https://x.com/sohammaury",
         icon: LucideTwitter,
       },
       email: {
         name: "Email",
-        url: "#",
+        url: "mailto:sohammaury@gmail.com",
         icon: Mail,
       },
     },
@@ -65,7 +65,7 @@ export function Social() {
       <TooltipProvider>
         <Dock
           direction="middle"
-          className="border-blue-300 border-[1px] rounded-full"
+          className="ring-blue-500 border-[2px] rounded-full"
         >
           {DATA.navbar.map((item) => (
             <DockIcon key={item.label}>

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import React from "react";
 
-import Navbar from "@/components/navbar";
 import ThemeProvider from "@/context/Theme";
 
 const OpenSans = localFont({
@@ -25,19 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${OpenSans.variable} bg-white/60 antialiased dark:bg-zinc-900`}
-      >
+      <body className={`${OpenSans.variable}  dark:bg-zinc-900`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="mx-auto my-0 flex w-full max-w-4xl items-center justify-between px-8 ">
-            {children}
-          </main>
+          {children}
         </ThemeProvider>
       </body>
     </html>
