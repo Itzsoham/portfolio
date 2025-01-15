@@ -30,8 +30,8 @@ import { Dock, DockIcon } from "./dock";
 
 const DATA = {
   navbar: [
-    { href: "#", icon: HomeIcon, label: "Home" },
-    { href: "#", icon: LaptopMinimal, label: "Projects" },
+    { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/projects", icon: LaptopMinimal, label: "Projects" },
   ],
   contact: {
     social: {

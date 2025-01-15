@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import React from "react";
 
 import ThemeProvider from "@/context/Theme";
+import { Analytics } from "@vercel/analytics/next";
 
 const OpenSans = localFont({
   variable: "--font-open-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

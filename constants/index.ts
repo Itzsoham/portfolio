@@ -2,7 +2,11 @@ import {
   BanknoteIcon,
   BedDoubleIcon,
   BedSingleIcon,
+  BookOpenText,
+  Crown,
+  Laptop,
   PizzaIcon,
+  ShoppingCartIcon,
 } from "lucide-react";
 
 export interface linksType {
@@ -23,10 +27,10 @@ export const Links = [
     name: "Resources",
     link: "/resources",
   },
-  {
-    name: "Etc",
-    link: "/etc",
-  },
+  // {
+  //   name: "Etc",
+  //   link: "/etc",
+  // },
 ];
 
 export const Exprience = [
@@ -91,5 +95,77 @@ export const Projects = [
     href: "https://royal-stay.vercel.app/",
     icon: BedSingleIcon,
     tags: ["Nextjs", "Supabase", "TailwindCSS", "Full-Stack", "Authjs"],
+  },
+  {
+    title: "Skillza",
+    description:
+      " A learning management system where you can post your own course as teacher and other user can enroll in the course and learn from it. Full-stack application with awesome UI and features.",
+    href: "https://skillza.vercel.app/",
+    icon: BookOpenText,
+    tags: ["Next", "AWS", "Shadcn UI", "Full-Stack"],
+  },
+  {
+    title: "Portfolio",
+    description:
+      "My own portfolio where I showcase my projects and other stuff. It's a simple frontend application with good UI.",
+    href: "https://itzsoham.vercel.app/",
+    icon: Crown,
+    tags: ["Next", "TailwindCSS", "Frontend"],
+  },
+];
+
+export const UpcomingProjects = [
+  {
+    title: "Luxara",
+    description:
+      "A SaSS E-commerce platform where you can sell your products and manage your inventory. Full-stack application with good charts and graphs.",
+    href: "https://www.github.com/itzsoham/",
+    icon: ShoppingCartIcon,
+    tags: ["Next", "Prisma", "Mono repo", "TailwindCSS", "Full-Stack"],
+  },
+  {
+    title: "Project Hunt",
+    description:
+      "A platform where you can post your projects and project ideas. ther user can see and upvote the project and also comment on it. Full-stack app with community and other features.",
+    href: "https://www.github.com/itzsoham/",
+    icon: Laptop,
+    tags: ["Next", "Prisma", "Mono repo", "TailwindCSS", "Full-Stack"],
+  },
+];
+
+export const Resources = [
+  {
+    title: "Cohort 3",
+    description: "Cohort 3 track and some other websites that be helpful",
+    link: "https://itzk1ng.notion.site/Cohort-3-0-9907fe59dd434a069347e78eac2137bd",
+  },
+  {
+    title: "Useful Webs",
+    description: "useful websites that I found randomly",
+    link: "https://itzk1ng.notion.site/d87276d459e041f2a819c7e0a172e226?v=430f202f2a024e88af0848fc8c03b4fe",
+  },
+  {
+    title: "GitHub Guide",
+    description:
+      "Some good profile I found on GitHub and some good resources to make your profile look good",
+    link: "https://itzk1ng.notion.site/GitHub-522beac0b9af447a827f484283ed42e8?pvs=4",
+  },
+  {
+    title: "Job hunt",
+    description:
+      "Notion template for job hunt track and some related resources",
+    link: "https://itzk1ng.notion.site/Outreach-295ade800fd9407187bac933d358d3d1?pvs=4",
+  },
+  {
+    title: "Design Resources",
+    description:
+      "Random design resources like ui library and templates that I found on the internet",
+    link: "https://itzk1ng.notion.site/Design-UI-UX-13ded1985a2a80638678f295be75513c?pvs=4",
+  },
+  {
+    title: "My Portfolio inspiration",
+    description:
+      "Portfolios that I found on the internet and got inspired by them",
+    link: "https://itzk1ng.notion.site/Portfolio-13fed1985a2a800eae33c76a86e9fb4f?pvs=4",
   },
 ];

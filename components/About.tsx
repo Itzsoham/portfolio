@@ -21,7 +21,7 @@ const About = () => {
         >
           <span className="relative">twitter</span>
         </a>{" "}
-        for tech updates and memes.
+        for my tech updates.
       </p>
     </div>
   );

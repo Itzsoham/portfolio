@@ -11,7 +11,7 @@ function Contact() {
         Contact me{" "}
         <a
           className="text-[#3b82f6] hover:underline"
-          href="https://x.com/ashirwadexe"
+          href="https://x.com/sohammaury"
           target="_blank"
         >
           with a direct on twitter

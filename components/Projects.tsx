@@ -11,7 +11,7 @@ const Projects = () => {
     <div>
       <Title title="Projects" />
       <div className="my-5 grid grid-cols-1 gap-4 md:grid-cols-2">
-        {ProjectData.map((project) => (
+        {ProjectData.slice(0, 4).map((project) => (
           <ProjectCard
             key={project.title}
             title={project.title}

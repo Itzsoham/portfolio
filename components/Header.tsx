@@ -23,9 +23,9 @@ const Header = () => {
           <Image
             fill
             className="bg-gray-100 object-contain"
-            src="/avatar.jpg"
+            src="/avatar2.jpg"
             sizes="20"
-            alt="Manu Arora"
+            alt="Soham Maury"
           />
         </a>
         <div className="z-0">
