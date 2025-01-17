@@ -6,6 +6,7 @@ import {
   Crown,
   Laptop,
   PizzaIcon,
+  ShoppingBag,
   ShoppingCartIcon,
 } from "lucide-react";
 
@@ -81,6 +82,23 @@ export const Projects = [
     tags: ["React", "Supabase", "Material UI", "Full-Stack"],
   },
   {
+    title: "Royal Stay Client",
+    description:
+      "A Client Side version of The Royal Stay where diffrent users come and Login with Google and book the cabins. Guest Area where they can update profile and edit bookings",
+    href: "https://royal-stay.vercel.app/",
+    icon: BedSingleIcon,
+    tags: ["Nextjs", "Supabase", "TailwindCSS", "Full-Stack", "Authjs"],
+  },
+
+  {
+    title: "Skillza",
+    description:
+      " A learning management system where you can post your own course as teacher and other user can enroll in the course and learn from it. Full-stack application with awesome UI and features.",
+    href: "https://skillza.vercel.app/",
+    icon: BookOpenText,
+    tags: ["Next", "AWS", "Shadcn UI", "Full-Stack"],
+  },
+  {
     title: "Pizza Club",
     description:
       "A Simple and Cool Pizza app where you can order the diffrent types of pizza with Ordering and Cart Functionality. It's just normal frontend application.",
@@ -89,20 +107,12 @@ export const Projects = [
     tags: ["React", "Redux", "TailwindCSS", "Frontend"],
   },
   {
-    title: "Royal Stay Client",
+    title: "Luxara - Frontend",
     description:
-      "A Client Side version of The Royal Stay where diffrent users come and Login with Google and book the cabins. Guest Area where they can update profile and edit bookings",
-    href: "https://royal-stay.vercel.app/",
-    icon: BedSingleIcon,
-    tags: ["Nextjs", "Supabase", "TailwindCSS", "Full-Stack", "Authjs"],
-  },
-  {
-    title: "Skillza",
-    description:
-      " A learning management system where you can post your own course as teacher and other user can enroll in the course and learn from it. Full-stack application with awesome UI and features.",
-    href: "https://skillza.vercel.app/",
-    icon: BookOpenText,
-    tags: ["Next", "AWS", "Shadcn UI", "Full-Stack"],
+      "Frontend of client side of Luxara E-commerce platform where you can sell your products. Only frontend for now made in react tailwind.",
+    href: "https://luxara-frontend.vercel.app/",
+    icon: ShoppingBag,
+    tags: ["React", "TailwindCSS", "Frontend"],
   },
   {
     title: "Portfolio",
@@ -116,7 +126,7 @@ export const Projects = [
 
 export const UpcomingProjects = [
   {
-    title: "Luxara",
+    title: "Luxara - Full stack",
     description:
       "A SaSS E-commerce platform where you can sell your products and manage your inventory. Full-stack application with good charts and graphs.",
     href: "https://www.github.com/itzsoham/",
