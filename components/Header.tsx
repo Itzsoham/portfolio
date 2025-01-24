@@ -9,7 +9,7 @@ const Header = () => {
         </h1>
 
         <div className="relative mb-5 flex-wrap items-center text-lg leading-7 text-zinc-700 dark:text-zinc-400">
-          Full-Stack Developer crafting elegant solutions that inspire and and
+          Full-Stack Developer crafting elegant solutions that inspire and
           deliver value.
         </div>
       </div>
