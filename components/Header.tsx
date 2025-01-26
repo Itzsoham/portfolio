@@ -23,7 +23,7 @@ const Header = () => {
           <Image
             fill
             className="bg-gray-100 object-contain"
-            src="/avatar2.jpg"
+            src="/avatar4.jpg"
             sizes="20"
             alt="Soham Maury"
           />

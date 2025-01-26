@@ -114,14 +114,6 @@ export const Projects = [
     icon: ShoppingBag,
     tags: ["React", "TailwindCSS", "Frontend"],
   },
-  {
-    title: "Portfolio",
-    description:
-      "My own portfolio where I showcase my projects and other stuff. It's a simple frontend application with good UI.",
-    href: "https://itzsoham.vercel.app/",
-    icon: Crown,
-    tags: ["Next", "TailwindCSS", "Frontend"],
-  },
 ];
 
 export const UpcomingProjects = [
