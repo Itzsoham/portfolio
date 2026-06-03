@@ -16,7 +16,7 @@ const About = () => {
         You can find me on{" "}
         <a
           href="https://x.com/sohammaury"
-          className=" group relative inline-flex overflow-hidden font-bold  dark:text-zinc-400"
+          className="group relative inline-flex overflow-hidden font-bold dark:text-zinc-400"
           target="__blank"
         >
           <span className="relative">twitter</span>

@@ -1,24 +1,14 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
+import eslintConfigPrettier from "eslint-config-prettier";
+import betterTailwindcss from "eslint-plugin-better-tailwindcss";
+import eslintPluginImport from "eslint-plugin-import";
 
-import { FlatCompat } from "@eslint/eslintrc";
-import eslintPluginImport from "eslint-plugin-import"; // Replace `require` with `import`
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
+// Next 16 + ESLint 9 flat config. eslint-config-next now ships native flat
+// configs, so we import them directly instead of going through FlatCompat.
 const eslintConfig = [
-  ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
-    "standard",
-    "plugin:tailwindcss/recommended",
-    "prettier"
-  ),
+  ...nextCoreWebVitals,
+  ...nextTypescript,
   {
     plugins: {
       import: eslintPluginImport,
@@ -53,11 +43,35 @@ const eslintConfig = [
     },
     settings: {},
   },
+  // Tailwind class linting (v4-compatible). Focused on real issues — conflicts,
+  // shorthands, duplicates, stray whitespace, deprecated classes — and skips
+  // the opinionated class-ordering / line-wrapping rules.
   {
-    ignores: ["components/ui/**"],
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    plugins: {
+      "better-tailwindcss": betterTailwindcss,
+    },
+    rules: {
+      "better-tailwindcss/no-conflicting-classes": "warn",
+      "better-tailwindcss/no-duplicate-classes": "warn",
+      "better-tailwindcss/no-unnecessary-whitespace": "warn",
+      "better-tailwindcss/enforce-shorthand-classes": "warn",
+      "better-tailwindcss/enforce-canonical-classes": "warn",
+      "better-tailwindcss/no-deprecated-classes": "warn",
+    },
+    settings: {
+      "better-tailwindcss": {
+        entryPoint: "app/globals.css",
+      },
+    },
+  },
+  // Keep prettier last so it disables any formatting-related rules above.
+  eslintConfigPrettier,
+  {
+    ignores: [".next/**"],
   },
   {
-    files: ["*.ts", "*.tsx"],
+    files: ["**/*.ts", "**/*.tsx"],
     rules: {
       "no-undef": "off",
     },

@@ -47,7 +47,7 @@ export const ResumeCard = ({
     >
       <Card className="flex items-center border-none bg-white/60 dark:bg-zinc-900">
         <div className="flex-none">
-          <Avatar className="m-auto size-[57px] border ">
+          <Avatar className="m-auto size-[57px] border">
             <AvatarImage
               src={logoUrl}
               alt={altText}
@@ -59,7 +59,7 @@ export const ResumeCard = ({
         <div className="group ml-4 grow flex-col items-center">
           <CardHeader className="py-2 pl-0">
             <div className="flex items-center justify-between gap-x-2 text-base">
-              <h3 className="my-0 inline-flex items-center justify-center text-xs font-semibold leading-none sm:text-base">
+              <h3 className="my-0 inline-flex items-center justify-center text-xs leading-none font-semibold sm:text-base">
                 {title}
                 {badges && (
                   <span className="inline-flex gap-x-1">
@@ -81,7 +81,7 @@ export const ResumeCard = ({
                   )}
                 />
               </h3>
-              <div className="text-right text-xs tabular-nums text-muted-foreground sm:text-sm">
+              <div className="text-muted-foreground text-right text-xs tabular-nums sm:text-sm">
                 {period}
               </div>
             </div>

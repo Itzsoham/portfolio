@@ -43,7 +43,7 @@ export default function ProjectCard({
   }
   return (
     <Link
-      className="group relative mb-4 w-full  rounded-xl border border-slate-200 transition duration-200 hover:shadow-lg dark:border-slate-700"
+      className="group relative mb-4 w-full rounded-xl border border-slate-200 transition duration-200 hover:shadow-lg dark:border-slate-700"
       href={href}
       aria-label={title}
       target="_blank"
@@ -53,10 +53,10 @@ export default function ProjectCard({
       <HoverPattern mouseX={mouseX} mouseY={mouseY} />
 
       <div className="relative h-full">
-        <span className="absolute -bottom-px right-px h-px w-2/5 bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
-        <span className="absolute -left-px top-1/2 h-2/5 w-px bg-gradient-to-b from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
+        <span className="absolute right-px -bottom-px h-px w-2/5 bg-linear-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
+        <span className="absolute top-1/2 -left-px h-2/5 w-px bg-linear-to-b from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
 
-        <div className="  relative flex flex-col  items-start rounded p-4 dark:border-gray-800">
+        <div className="relative flex flex-col items-start rounded-sm p-4 dark:border-gray-800">
           {/* */}
 
           <div className="my-4">{icon}</div>
@@ -72,7 +72,7 @@ export default function ProjectCard({
               {tags?.map((tag, idx) => (
                 <p
                   key={idx}
-                  className={`mb-2 mr-2 rounded-md bg-gray-50 px-1 text-xs italic leading-5 text-gray-700 dark:border dark:border-zinc-700  dark:bg-transparent dark:text-gray-300`}
+                  className={`mr-2 mb-2 rounded-md bg-gray-50 px-1 text-xs/5 text-gray-700 italic dark:border dark:border-zinc-700 dark:bg-transparent dark:text-gray-300`}
                 >
                   {tag}
                 </p>
@@ -98,7 +98,7 @@ function HoverPattern({
   return (
     <div className="pointer-events-none">
       <motion.div
-        className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-100/50 to-teal-100/50 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-[#202D2E] dark:to-[#303428]"
+        className="absolute inset-0 rounded-xl bg-linear-to-r from-blue-100/50 to-teal-100/50 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-[#202D2E] dark:to-[#303428]"
         style={style}
       />
       <motion.div

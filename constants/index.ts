@@ -3,7 +3,6 @@ import {
   BedDoubleIcon,
   BedSingleIcon,
   BookOpenText,
-  Crown,
   Laptop,
   PizzaIcon,
   ShoppingBag,

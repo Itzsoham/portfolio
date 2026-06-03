@@ -1,10 +1,10 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import React from "react";
 
 import ThemeProvider from "@/context/Theme";
-import { Analytics } from "@vercel/analytics/next";
 
 const OpenSans = localFont({
   variable: "--font-open-sans",
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${OpenSans.variable}  dark:bg-zinc-900`}>
+      <body className={`${OpenSans.variable} dark:bg-zinc-900`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

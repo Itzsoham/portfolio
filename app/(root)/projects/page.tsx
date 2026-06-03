@@ -1,16 +1,18 @@
-import ProjectCard from "@/components/cards/ProjectCard";
-import React from "react";
-import { Projects as ProjectData, UpcomingProjects } from "@/constants";
-import Contact from "@/components/Contact";
 import Link from "next/link";
+import React from "react";
+
+import ProjectCard from "@/components/cards/ProjectCard";
+import Contact from "@/components/Contact";
+import { Projects as ProjectData, UpcomingProjects } from "@/constants";
+
 
 const Projects = () => {
   return (
     <div className="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center">
-      <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+      <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
         Projects
       </h1>
-      <h2 className="prose text-gray-600 dark:text-gray-400 mb-16">
+      <h2 className="prose mb-16 text-gray-600 dark:text-gray-400">
         I’ve developed many projects some for learning and some for hobby. All
         best projects are included (along with course related projects) –&nbsp;
         <Link href="https://www.github.com/itzsoham">
@@ -18,10 +20,10 @@ const Projects = () => {
             checkout my all projects&nbsp;
           </span>
         </Link>
-        while you're here. <br />
+        while you&apos;re here. <br />
         Most of them are deployed and working.
       </h2>
-      <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
+      <h3 className="mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
         Full-Stack
       </h3>
       <div className="my-5 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -38,7 +40,7 @@ const Projects = () => {
       </div>
       <a
         href="https://github.com/itzsoham"
-        className="border flex flex-row items-center justify-center mx-auto rounded-md dark:text-gray-300 px-4 py-2 text-gray-800"
+        className="mx-auto flex flex-row items-center justify-center rounded-md border px-4 py-2 text-gray-800 dark:text-gray-300"
       >
         See all at{" "}
         <span>
@@ -56,11 +58,11 @@ const Projects = () => {
         </span>
       </a>
 
-      <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
+      <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
         Upcoming Projects
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {UpcomingProjects.map((project) => (
           <ProjectCard
             key={project.title}

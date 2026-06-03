@@ -1,7 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { text } from "stream/consumers";
 
 const More = ({ href, text }: { href: string; text: string }) => {
   return (

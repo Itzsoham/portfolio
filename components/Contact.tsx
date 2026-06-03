@@ -4,13 +4,13 @@ import { Social } from "./ui/Social";
 
 function Contact() {
   return (
-    <div className="mx-auto flex max-w-screen-md flex-col items-center justify-center px-5 pt-12">
+    <div className="mx-auto flex max-w-3xl flex-col items-center justify-center px-5 pt-12">
       <h1 className="mt-3 text-4xl font-bold sm:text-5xl">Get In Touch</h1>
       <p className="p-5 text-center text-lg font-semibold text-[#939393] sm:mx-20">
         {" "}
         Contact me{" "}
         <a
-          className="text-[#3b82f6] hover:underline"
+          className="text-blue-500 hover:underline"
           href="https://x.com/sohammaury"
           target="_blank"
         >

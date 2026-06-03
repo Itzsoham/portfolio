@@ -12,7 +12,7 @@ const Skill = () => {
       <div className="flex flex-wrap gap-1">
         {Skills.map((skill) => (
           <Badge
-            className="bg-zinc-900  text-sm dark:bg-white dark:text-zinc-900"
+            className="bg-zinc-900 text-sm dark:bg-white dark:text-zinc-900"
             key={skill}
           >
             {skill}

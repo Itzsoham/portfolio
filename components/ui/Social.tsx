@@ -1,22 +1,10 @@
 "use client";
 
-import {
-  CalendarIcon,
-  Github,
-  HomeIcon,
-  LaptopMinimal,
-  Linkedin,
-  LucideTwitter,
-  Mail,
-  MailIcon,
-  PencilIcon,
-  TwitchIcon,
-  Twitter,
-  TwitterIcon,
-} from "lucide-react";
+import { HomeIcon, LaptopMinimal, Mail } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
+import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/ui/brand-icons";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -26,6 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+
 import { Dock, DockIcon } from "./dock";
 
 const DATA = {
@@ -38,23 +27,15 @@ const DATA = {
       GitHub: {
         name: "GitHub",
         url: "https://github.com/itzsoham",
-        icon: Github,
+        icon: GitHubIcon,
       },
       LinkedIn: {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/sohammaury/",
-        icon: Linkedin,
+        icon: LinkedInIcon,
       },
-      X: {
-        name: "X",
-        url: "https://x.com/sohammaury",
-        icon: LucideTwitter,
-      },
-      email: {
-        name: "Email",
-        url: "mailto:sohammaury@gmail.com",
-        icon: Mail,
-      },
+      X: { name: "X", url: "https://x.com/sohammaury", icon: XIcon },
+      email: { name: "Email", url: "mailto:sohammaury@gmail.com", icon: Mail },
     },
   },
 };
@@ -65,7 +46,7 @@ export function Social() {
       <TooltipProvider>
         <Dock
           direction="middle"
-          className="ring-blue-500 border-[2px] rounded-full"
+          className="ring-blue-500 border-2 rounded-full"
         >
           {DATA.navbar.map((item) => (
             <DockIcon key={item.label}>

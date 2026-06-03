@@ -9,7 +9,7 @@ const Title = ({
 }) => {
   return (
     <h3
-      className={`mb-4 font-bold tracking-tight text-black dark:text-white  ${className}`}
+      className={`mb-4 font-bold tracking-tight text-black dark:text-white ${className}`}
     >
       {title}
     </h3>

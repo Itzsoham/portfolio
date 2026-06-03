@@ -24,7 +24,7 @@ const NavLinks = ({ links }: { links: linksType[] }) => {
           <AnimatePresence>
             {hoveredIndex === index && (
               <motion.span
-                className="absolute inset-0  bg-gray-50 dark:bg-zinc-800"
+                className="absolute inset-0 bg-gray-50 dark:bg-zinc-800"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 0.15 } }}
@@ -46,7 +46,7 @@ const NavLinks = ({ links }: { links: linksType[] }) => {
             {navLink.name}
           </span>
           {pathname === navLink.link && (
-            <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
+            <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
           )}
         </Link>
       ))}
