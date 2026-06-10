@@ -1,7 +1,7 @@
 import React from "react";
 
 const Title = ({
-  className = "md:text-4xl text-2xl",
+  className = "",
   title,
 }: {
   className?: string;
@@ -9,8 +9,9 @@ const Title = ({
 }) => {
   return (
     <h3
-      className={`mb-4 font-bold tracking-tight text-black dark:text-white ${className}`}
+      className={`mt-10 mb-4 flex items-center gap-2.5 text-2xl font-bold tracking-tight text-foreground ${className}`}
     >
+      <span className="font-mono text-base text-accent">#</span>
       {title}
     </h3>
   );

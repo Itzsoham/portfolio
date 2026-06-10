@@ -1,5 +1,5 @@
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-// import Image from "next/image";
 
 export default function ResourcesCard({
   title,
@@ -14,38 +14,19 @@ export default function ResourcesCard({
   return (
     <Link
       href={link}
-      className="relative w-full rounded-xl border border-gray-200 p-4 dark:border-zinc-800"
+      className="group relative w-full rounded-xl border border-border bg-card p-4 transition hover:border-accent/40 hover:shadow-md"
       {...rest}
-      target="__blank"
+      target="_blank"
+      rel="noopener noreferrer"
     >
-      <span className="absolute right-px -bottom-px h-px w-[40%] bg-linear-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
-      <span className="absolute -left-px h-[40%] w-px bg-linear-to-b from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
+      <ArrowUpRight className="absolute top-4 right-4 size-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
 
-      <div className="flex items-center text-gray-900 dark:text-gray-100">
-        {/* <span className="mt-1 text-gray-400 dark:text-gray-400 inline-block">
-            {name}
-          </span> */}
-
-        <svg
-          className="mt-1.5 ml-1 size-4"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-          />
-        </svg>
-      </div>
-
-      <h3 className="mt-2 text-left text-lg font-bold text-gray-900 dark:text-gray-100">
+      <h3 className="text-left text-lg font-bold tracking-tight text-foreground">
         {title}
       </h3>
-      <p className="mt-1 text-gray-700 dark:text-gray-400">{description}</p>
+      <p className="mt-1.5 text-sm leading-6 text-muted-foreground">
+        {description}
+      </p>
     </Link>
   );
 }

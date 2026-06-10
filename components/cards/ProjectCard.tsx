@@ -1,11 +1,4 @@
-"use client";
-
-import {
-  motion,
-  MotionValue,
-  useMotionTemplate,
-  useMotionValue,
-} from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { ReactElement } from "react";
 
@@ -24,87 +17,37 @@ export default function ProjectCard({
   icon,
   tags,
 }: Props) {
-  // const tags = ["GitHub", "React", "JamStack"];
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function onMouseMove({
-    currentTarget,
-    clientX,
-    clientY,
-  }: {
-    currentTarget: HTMLElement;
-    clientX: number;
-    clientY: number;
-  }) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
   return (
     <Link
-      className="group relative mb-4 w-full rounded-xl border border-slate-200 transition duration-200 hover:shadow-lg dark:border-slate-700"
+      className="group relative flex w-full flex-col rounded-xl border border-border bg-card p-5 transition duration-200 hover:border-accent/40 hover:shadow-md"
       href={href}
       aria-label={title}
       target="_blank"
       rel="noopener noreferrer"
-      onMouseMove={onMouseMove}
     >
-      <HoverPattern mouseX={mouseX} mouseY={mouseY} />
+      <ArrowUpRight className="absolute top-4 right-4 size-4 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
 
-      <div className="relative h-full">
-        <span className="absolute right-px -bottom-px h-px w-2/5 bg-linear-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
-        <span className="absolute top-1/2 -left-px h-2/5 w-px bg-linear-to-b from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0"></span>
+      <div className="mb-4 grid size-12 place-items-center rounded-lg border border-border bg-muted text-foreground">
+        {icon}
+      </div>
 
-        <div className="relative flex flex-col items-start rounded-sm p-4 dark:border-gray-800">
-          {/* */}
+      <h4 className="text-lg font-bold tracking-tight text-foreground">
+        {title}
+      </h4>
+      <p className="mt-2 grow text-sm leading-6 text-muted-foreground">
+        {description}
+      </p>
 
-          <div className="my-4">{icon}</div>
-
-          <div>
-            <h4 className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
-              {title}
-            </h4>
-            <p className="pt-4 leading-6 text-gray-700 dark:text-gray-300">
-              {description}
-            </p>
-            <div className="flex flex-wrap pt-4 md:flex-row">
-              {tags?.map((tag, idx) => (
-                <p
-                  key={idx}
-                  className={`mr-2 mb-2 rounded-md bg-gray-50 px-1 text-xs/5 text-gray-700 italic dark:border dark:border-zinc-700 dark:bg-transparent dark:text-gray-300`}
-                >
-                  {tag}
-                </p>
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="mt-4 flex flex-wrap gap-1.5">
+        {tags?.map((tag, idx) => (
+          <span
+            key={idx}
+            className="rounded-md border border-border bg-background px-1.5 py-0.5 font-mono text-[11px] text-muted-foreground"
+          >
+            {tag}
+          </span>
+        ))}
       </div>
     </Link>
-  );
-}
-
-function HoverPattern({
-  mouseX,
-  mouseY,
-}: {
-  mouseX: MotionValue<number>;
-  mouseY: MotionValue<number>;
-}) {
-  const maskImage = useMotionTemplate`radial-gradient(300px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  const style = { maskImage, WebkitMaskImage: maskImage };
-
-  return (
-    <div className="pointer-events-none">
-      <motion.div
-        className="absolute inset-0 rounded-xl bg-linear-to-r from-blue-100/50 to-teal-100/50 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-[#202D2E] dark:to-[#303428]"
-        style={style}
-      />
-      <motion.div
-        className="absolute inset-0 rounded-xl opacity-0 mix-blend-overlay transition duration-300 group-hover:opacity-100"
-        style={style}
-      ></motion.div>
-    </div>
   );
 }

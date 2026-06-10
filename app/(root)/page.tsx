@@ -5,16 +5,28 @@ import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Header from "@/components/Header";
 import Projects from "@/components/Projects";
+import Hatch from "@/components/shell/Hatch";
 import Skill from "@/components/Skill";
+import TypingTest from "@/components/TypingTest";
 
 const Root = () => {
   return (
-    <div className="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center">
+    <div className="flex w-full flex-col">
       <Header />
+
+      <div className="my-8">
+        <Hatch />
+      </div>
+
       <About />
       <Projects />
       <Experience />
       <Skill />
+
+      <div className="mt-12">
+        <TypingTest />
+      </div>
+
       <Contact />
     </div>
   );

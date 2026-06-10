@@ -18,7 +18,7 @@ const Projects = () => {
             description={project.description}
             href={project.href}
             tags={project.tags}
-            icon={React.createElement(project.icon, { className: "size-10" })}
+            icon={React.createElement(project.icon, { className: "size-6" })}
           />
         ))}
       </div>

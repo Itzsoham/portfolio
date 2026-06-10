@@ -4,15 +4,81 @@ import {
   BedSingleIcon,
   BookOpenText,
   Laptop,
+  Mail,
   PizzaIcon,
   ShoppingBag,
   ShoppingCartIcon,
 } from "lucide-react";
 
+import type React from "react";
+
+import {
+  GitHubIcon,
+  LeetCodeIcon,
+  LinkedInIcon,
+  XIcon,
+} from "@/components/ui/brand-icons";
+
+type SocialIcon = React.ComponentType<{ className?: string }>;
+
 export interface linksType {
   name: string;
   link: string;
 }
+
+/** Site-wide identity used by the shell (breadcrumb, footer, command bar). */
+export const Site = {
+  name: "Soham Maury",
+  domain: "sohammaury.me",
+  role: "Full-Stack Developer",
+  tagline:
+    "I build seamless web-apps and websites that deliver real value — from intuitive interfaces to scalable back-ends.",
+  greeting: "Heyy!",
+  visitorCount: 1024, // static placeholder — swap for a real Supabase/KV count later
+  avatar: "/avatar4.jpg",
+  builtWith: ["Next.js", "Tailwind", "Supabase"],
+};
+
+export interface SocialLink {
+  name: string;
+  url: string;
+  icon: SocialIcon;
+  /** brand accent used for the icon tile */
+  color: string;
+}
+
+export const Socials: SocialLink[] = [
+  {
+    name: "GitHub",
+    url: "https://github.com/itzsoham",
+    icon: GitHubIcon,
+    color: "#181717",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/sohammaury/",
+    icon: LinkedInIcon,
+    color: "#0A66C2",
+  },
+  {
+    name: "X",
+    url: "https://x.com/sohammaury",
+    icon: XIcon,
+    color: "#000000",
+  },
+  {
+    name: "LeetCode",
+    url: "https://leetcode.com/itzsoham/",
+    icon: LeetCodeIcon,
+    color: "#FFA116",
+  },
+  {
+    name: "Email",
+    url: "mailto:sohammaury@gmail.com",
+    icon: Mail,
+    color: "#3b82f6",
+  },
+];
 
 export const Links = [
   {

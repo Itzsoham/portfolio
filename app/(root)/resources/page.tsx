@@ -2,27 +2,36 @@ import React from "react";
 
 import ResourcesCard from "@/components/cards/ResourcesCard";
 import Contact from "@/components/Contact";
+import Breadcrumb from "@/components/shell/Breadcrumb";
+import Hatch from "@/components/shell/Hatch";
+import Title from "@/components/ui/Title";
 import { Resources as ResourcesData } from "@/constants";
 
 const Resources = () => {
   return (
-    <div className="mx-auto mb-16 flex max-w-2xl flex-col items-start justify-center">
-      <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
-        Resources
-      </h1>
-      <p className="mb-4 text-gray-600 dark:text-gray-400">
-        Some{" "}
-        <span className="rounded-md border bg-gray-100 px-1 py-0.5 tracking-tight dark:bg-gray-700 dark:text-gray-300">
-          Notion Docs
-        </span>{" "}
-        that I made from different resources and I use on day to day basis. It
-        might help you too.
-      </p>
+    <div className="flex w-full flex-col">
+      <Breadcrumb file="resources.md" />
 
-      <h2 className="mt-8 border-b-4 border-blue-500 text-xl font-bold tracking-tight text-black md:text-2xl dark:text-white">
-        Cohort
-      </h2>
-      <div className="my-2 mt-4 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="mt-6 border-l-2 border-border pl-5">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+          Resources
+        </h1>
+        <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
+          Some{" "}
+          <span className="rounded-md border border-border bg-card px-1.5 py-0.5 font-mono text-sm">
+            Notion docs
+          </span>{" "}
+          I made from different resources and use day to day. They might help you
+          too.
+        </p>
+      </div>
+
+      <div className="my-8">
+        <Hatch />
+      </div>
+
+      <Title title="Cohort" />
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
         {ResourcesData.slice(0, 1).map((resource) => (
           <ResourcesCard
             key={resource.title}
@@ -32,10 +41,9 @@ const Resources = () => {
           />
         ))}
       </div>
-      <h2 className="mt-8 border-b-4 border-blue-500 text-xl font-bold tracking-tight text-black md:text-2xl dark:text-white">
-        Others
-      </h2>
-      <div className="my-2 mt-4 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+
+      <Title title="Others" />
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
         {ResourcesData.slice(1).map((resource) => (
           <ResourcesCard
             key={resource.title}
@@ -45,6 +53,7 @@ const Resources = () => {
           />
         ))}
       </div>
+
       <Contact />
     </div>
   );
