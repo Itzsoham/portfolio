@@ -19,7 +19,7 @@ const NavLinks = ({ links }: { links: linksType[] }) => {
           href={navLink.link}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
-          className="relative inline-block rounded-lg px-3 py-2 text-sm text-gray-700 transition-all delay-150 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-900"
+          className="relative inline-block px-3 py-2 text-sm text-gray-700 transition-all delay-150 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-900"
         >
           <AnimatePresence>
             {hoveredIndex === index && (

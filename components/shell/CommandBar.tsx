@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowUpRight, CornerDownLeft, Moon, Search, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 import {
   type KeyboardEvent as ReactKeyboardEvent,
   type ReactNode,
@@ -12,6 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { createPortal } from "react-dom";
 
 import { Links, Socials } from "@/constants";
 
@@ -25,16 +26,23 @@ type CommandItem = {
 };
 
 /**
- * Functional command palette. Opens on ⌘K / Ctrl-K or by clicking the top-bar
- * pill. Supports type-to-filter, ↑/↓ to move, Enter to run, Esc to close.
+ * Functional command palette. Opens on ⌘K / Ctrl-K or by clicking the pill in
+ * the navbar notch. Supports type-to-filter, ↑/↓ to move, Enter to run, Esc to
+ * close. The dialog is portalled to <body> so it escapes the navbar's stacking
+ * context and covers the bar itself.
  */
 const CommandBar = () => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // portals need a DOM target, so only render the dialog after hydration
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => setMounted(true), []);
 
   const items = useMemo<CommandItem[]>(() => {
     const pages: CommandItem[] = Links.map((l) => ({
@@ -87,11 +95,17 @@ const CommandBar = () => {
     setActive(0);
   }, []);
 
+  const openPalette = useCallback(() => {
+    setActive(0);
+    setOpen(true);
+  }, []);
+
   // global ⌘K / Ctrl-K to toggle the palette
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
+        setActive(0);
         setOpen((o) => !o);
       }
     };
@@ -99,14 +113,11 @@ const CommandBar = () => {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // focus input + reset highlight whenever it opens
+  // focus the input once the dialog has painted
   useEffect(() => {
-    if (open) {
-      setActive(0);
-      // focus after paint so the dialog is mounted
-      const id = window.requestAnimationFrame(() => inputRef.current?.focus());
-      return () => window.cancelAnimationFrame(id);
-    }
+    if (!open) return;
+    const id = window.requestAnimationFrame(() => inputRef.current?.focus());
+    return () => window.cancelAnimationFrame(id);
   }, [open]);
 
   const runItem = (item?: CommandItem) => {
@@ -133,29 +144,28 @@ const CommandBar = () => {
 
   return (
     <>
-      {/* trigger pill (left of the top bar) */}
+      {/* trigger pill — compact, it lives inside the navbar notch */}
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={openPalette}
         aria-label="Open command bar"
-        className="group flex items-center gap-2 rounded-full border border-border bg-card/80 py-1.5 pr-3 pl-2 font-mono text-sm text-muted-foreground shadow-sm backdrop-blur-sm transition hover:text-foreground"
+        className="group flex items-center gap-1.5 border border-border bg-background py-1 pr-2 pl-1 font-mono text-xs text-muted-foreground transition hover:border-accent/40 hover:text-foreground"
       >
-        <span className="grid size-6 place-items-center rounded-full border border-border text-xs text-accent">
+        <span className="grid size-5 place-items-center border border-border text-[10px] text-accent">
           /
         </span>
-        Command Bar
-        <kbd className="ml-1 hidden rounded border border-border bg-muted px-1.5 text-[10px] sm:inline">
-          ⌘K
-        </kbd>
+        <kbd className="pr-0.5 text-[10px]">⌘K</kbd>
       </button>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-start justify-center bg-foreground/20 p-4 pt-[12vh] backdrop-blur-sm"
-          onMouseDown={close}
-        >
+      {mounted &&
+        open &&
+        createPortal(
           <div
-            className="w-full max-w-lg overflow-hidden rounded-xl border border-border bg-popover shadow-2xl"
+            className="fixed inset-0 z-50 flex items-start justify-center bg-foreground/20 p-4 pt-[12vh] backdrop-blur-sm"
+            onMouseDown={close}
+          >
+          <div
+            className="w-full max-w-lg overflow-hidden border border-border bg-popover shadow-2xl"
             onMouseDown={(e) => e.stopPropagation()}
             onKeyDown={onListKey}
           >
@@ -171,7 +181,7 @@ const CommandBar = () => {
                 placeholder="Type a command or search…"
                 className="w-full bg-transparent py-3 font-mono text-sm text-foreground outline-none placeholder:text-muted-foreground"
               />
-              <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
+              <kbd className="border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
                 esc
               </kbd>
             </div>
@@ -196,7 +206,7 @@ const CommandBar = () => {
                       type="button"
                       onMouseEnter={() => setActive(idx)}
                       onClick={() => runItem(item)}
-                      className={`flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left text-sm transition ${
+                      className={`flex w-full items-center gap-3 px-2.5 py-2 text-left text-sm transition ${
                         active === idx
                           ? "bg-accent/10 text-foreground"
                           : "text-muted-foreground"
@@ -217,9 +227,10 @@ const CommandBar = () => {
                 );
               })}
             </ul>
-          </div>
-        </div>
-      )}
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 };

@@ -2,14 +2,16 @@ import {
   BanknoteIcon,
   BedDoubleIcon,
   BedSingleIcon,
+  BookMarked,
   BookOpenText,
+  FolderGit2,
+  House,
   Laptop,
   Mail,
   PizzaIcon,
   ShoppingBag,
   ShoppingCartIcon,
 } from "lucide-react";
-
 import type React from "react";
 
 import {
@@ -33,6 +35,7 @@ export const Site = {
   role: "Full-Stack Developer",
   tagline:
     "I build seamless web-apps and websites that deliver real value — from intuitive interfaces to scalable back-ends.",
+  bio: "Full-stack developer who builds seamless web apps — from intuitive interfaces to scalable back-ends.",
   greeting: "Heyy!",
   visitorCount: 1024, // static placeholder — swap for a real Supabase/KV count later
   avatar: "/avatar4.jpg",
@@ -80,22 +83,27 @@ export const Socials: SocialLink[] = [
   },
 ];
 
-export const Links = [
+/** nav entries — `icon` is rendered by the notch navbar and the mobile menu */
+export const Links: { name: string; link: string; icon: SocialIcon }[] = [
   {
     name: "Home",
     link: "/",
+    icon: House,
   },
   {
     name: "Projects",
     link: "/projects",
+    icon: FolderGit2,
   },
   {
     name: "Resources",
     link: "/resources",
+    icon: BookMarked,
   },
   // {
   //   name: "Etc",
   //   link: "/etc",
+  //   icon: Boxes,
   // },
 ];
 

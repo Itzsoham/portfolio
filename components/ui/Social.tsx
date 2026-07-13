@@ -46,7 +46,7 @@ export function Social() {
       <TooltipProvider>
         <Dock
           direction="middle"
-          className="ring-blue-500 border-2 rounded-full"
+          className="ring-blue-500 border-2"
         >
           {DATA.navbar.map((item) => (
             <DockIcon key={item.label}>
@@ -57,7 +57,7 @@ export function Social() {
                     aria-label={item.label}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
+                      "size-12"
                     )}
                   >
                     <item.icon className="size-4" />
@@ -79,7 +79,7 @@ export function Social() {
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
+                      "size-12"
                     )}
                   >
                     <social.icon className="size-4" />

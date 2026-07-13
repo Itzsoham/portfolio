@@ -44,7 +44,7 @@ const TypingTest = () => {
       <button
         type="button"
         onClick={focus}
-        className="block w-full cursor-text text-left text-sm leading-7 tracking-tight"
+        className="block w-full cursor-text text-left text-sm/7 tracking-tight"
         aria-label="Focus typing test"
       >
         {sentence.split("").map((char, i) => {
@@ -67,7 +67,7 @@ const TypingTest = () => {
         })}
       </button>
 
-      <div className="mt-3 rounded-lg border border-border bg-card px-3 py-2">
+      <div className="mt-3 border border-border bg-card px-3 py-2">
         <input
           ref={inputRef}
           value={typed}
@@ -82,7 +82,7 @@ const TypingTest = () => {
 
       <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
         <span className="inline-flex items-center gap-1.5">
-          <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 text-[10px]">
+          <kbd className="border border-border bg-muted px-1.5 py-0.5 text-[10px]">
             TAB
           </kbd>
           new sentence

@@ -13,7 +13,7 @@ const Header = () => {
           <br />
           I&apos;m {Site.name}
         </h1>
-        <p className="mt-5 max-w-xl text-lg leading-7 text-muted-foreground">
+        <p className="mt-5 max-w-xl text-lg/7 text-muted-foreground">
           {Site.tagline}
         </p>
       </div>

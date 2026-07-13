@@ -28,7 +28,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.625rem;
+    --radius: 0rem; /* the whole shell is square — see the border-radius reset below */
 
     --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code",
       Menlo, Consolas, monospace;
@@ -68,6 +68,32 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Square by design: every corner in the UI is sharp. This backstops the
+     utility sweep, so a curve copied in from a snippet or a shadcn primitive
+     can't creep back. The navbar/footer notch is a clip-path, not a
+     border-radius, so it is unaffected. Drop this block to allow curves again. */
+  *,
+  *::before,
+  *::after {
+    border-radius: 0 !important;
+  }
+}
+
+/* Theme switch — the incoming theme is revealed by a circle that grows out of
+   the toggle (see ThemeToggle). Kill the default cross-fade and stack the new
+   snapshot on top so the clip-path animation is what you actually see.
+   Deliberately unlayered: these must not sit below Tailwind's layers. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
 }
 
 @layer components {
@@ -98,6 +124,6 @@
 
   /* shimmering skeleton placeholder block */
   .skeleton {
-    @apply animate-pulse rounded-md bg-muted;
+    @apply animate-pulse bg-muted;
   }
 }

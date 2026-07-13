@@ -14,7 +14,7 @@ export default function ResourcesCard({
   return (
     <Link
       href={link}
-      className="group relative w-full rounded-xl border border-border bg-card p-4 transition hover:border-accent/40 hover:shadow-md"
+      className="group relative w-full border border-border bg-card p-4 transition hover:border-accent/40 hover:shadow-md"
       {...rest}
       target="_blank"
       rel="noopener noreferrer"
@@ -24,7 +24,7 @@ export default function ResourcesCard({
       <h3 className="text-left text-lg font-bold tracking-tight text-foreground">
         {title}
       </h3>
-      <p className="mt-1.5 text-sm leading-6 text-muted-foreground">
+      <p className="mt-1.5 text-sm/6 text-muted-foreground">
         {description}
       </p>
     </Link>

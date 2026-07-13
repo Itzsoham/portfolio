@@ -2,7 +2,7 @@
 const Hatch = ({ className = "" }: { className?: string }) => {
   return (
     <div
-      className={`hatch h-5 w-full rounded-sm border-y border-border/60 opacity-70 ${className}`}
+      className={`hatch h-5 w-full border-y border-border/60 opacity-70 ${className}`}
       aria-hidden="true"
     />
   );

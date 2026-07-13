@@ -18,7 +18,7 @@ const Resources = () => {
         </h1>
         <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
           Some{" "}
-          <span className="rounded-md border border-border bg-card px-1.5 py-0.5 font-mono text-sm">
+          <span className="border border-border bg-card px-1.5 py-0.5 font-mono text-sm">
             Notion docs
           </span>{" "}
           I made from different resources and use day to day. They might help you

@@ -5,7 +5,7 @@ import { Socials } from "@/constants";
 
 function Contact() {
   return (
-    <div className="mt-16 w-full rounded-xl border border-border bg-card p-6 sm:p-8">
+    <div className="mt-16 w-full border border-border bg-card p-6 sm:p-8">
       <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
         {"// get in touch"}
       </p>
@@ -32,7 +32,7 @@ function Contact() {
             href={s.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 text-sm font-medium text-foreground transition hover:border-accent/40"
+            className="group inline-flex items-center gap-2 border border-border bg-background px-3 py-2 text-sm font-medium text-foreground transition hover:border-accent/40"
           >
             <s.icon className="size-4" />
             {s.name}

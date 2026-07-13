@@ -53,7 +53,7 @@ const Projects = () => {
         href="https://github.com/itzsoham"
         target="_blank"
         rel="noopener noreferrer"
-        className="group mx-auto my-8 flex items-center justify-center gap-1.5 rounded-md border border-border bg-card px-4 py-2 font-mono text-sm text-muted-foreground transition hover:border-accent/40 hover:text-foreground"
+        className="group mx-auto my-8 flex items-center justify-center gap-1.5 border border-border bg-card px-4 py-2 font-mono text-sm text-muted-foreground transition hover:border-accent/40 hover:text-foreground"
       >
         See all on GitHub
         <ArrowUpRight className="size-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
