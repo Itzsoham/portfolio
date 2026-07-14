@@ -63,9 +63,29 @@ export default {
   		},
   		animation: {
   			'shimmer-slide': 'shimmer-slide var(--speed) ease-in-out infinite alternate',
-  			'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear'
+  			'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear',
+  			'drop-in': 'drop-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both',
+  			caret: 'caret 1.1s step-end infinite'
   		},
   		keyframes: {
+  			caret: {
+  				'0%, 100%': {
+  					opacity: '1'
+  				},
+  				'50%': {
+  					opacity: '0'
+  				}
+  			},
+  			'drop-in': {
+  				from: {
+  					opacity: '0',
+  					transform: 'translateY(-14px)'
+  				},
+  				to: {
+  					opacity: '1',
+  					transform: 'translateY(0)'
+  				}
+  			},
   			'shimmer-slide': {
   				to: {
   					transform: 'translate(calc(100cqw - 100%), 0)'

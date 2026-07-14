@@ -39,6 +39,17 @@ export const Site = {
     "I build seamless web-apps and websites that deliver real value — from intuitive interfaces to scalable back-ends.",
   bio: "Full-stack developer who builds seamless web apps — from intuitive interfaces to scalable back-ends.",
   greeting: "Heyy!",
+  location: "Ahmedabad, IN",
+  /** drives the status dot in the hero front-matter and the sidebar card */
+  openToWork: true,
+  /** the short stack line in the hero front-matter — the headline six, not every skill */
+  stack: ["TypeScript", "React", "Next.js", "Node.js", "Postgres", "AWS"],
+  /**
+   * Path to the résumé in /public, e.g. "/soham-maury-resume.pdf". While this is
+   * null the Résumé buttons don't render at all — drop the PDF in and set this,
+   * and it lights up in the hero and the sidebar card.
+   */
+  resume: null as string | null,
   visitorCount: 1024, // static placeholder — swap for a real Supabase/KV count later
   avatar: "/avatar4.jpg",
   builtWith: ["Next.js", "Tailwind", "Supabase"],
@@ -109,12 +120,12 @@ export const Links: { name: string; link: string; icon: SocialIcon }[] = [
   // },
 ];
 
-export const Exprience = [
+export const Experience = [
   {
     company: "ZenDevX",
     href: "https://zendevx.com",
     badges: [],
-    location: "Ahemdabad, India",
+    location: "Ahmedabad, India",
     title: "Software Developer",
     logoUrl: "/zendevx.png",
     start: "Sep 2023",
@@ -157,15 +168,6 @@ export const Projects = [
     tags: ["React", "Supabase", "Material UI", "Full-Stack"],
   },
   {
-    title: "Royal Stay Client",
-    description:
-      "A Client Side version of The Royal Stay where diffrent users come and Login with Google and book the cabins. Guest Area where they can update profile and edit bookings",
-    href: "https://royal-stay.vercel.app/",
-    icon: BedSingleIcon,
-    tags: ["Nextjs", "Supabase", "TailwindCSS", "Full-Stack", "Authjs"],
-  },
-
-  {
     title: "Skillza",
     description:
       " A learning management system where you can post your own course as teacher and other user can enroll in the course and learn from it. Full-stack application with awesome UI and features.",
@@ -174,20 +176,31 @@ export const Projects = [
     tags: ["Next", "AWS", "Shadcn UI", "Full-Stack"],
   },
   {
-    title: "Pizza Club",
-    description:
-      "A Simple and Cool Pizza app where you can order the diffrent types of pizza with Ordering and Cart Functionality. It's just normal frontend application.",
-    href: "https://pizza--club.vercel.app/",
-    icon: PizzaIcon,
-    tags: ["React", "Redux", "TailwindCSS", "Frontend"],
-  },
-  {
     title: "Luxara - Frontend",
     description:
       "Frontend of client side of Luxara E-commerce platform where you can sell your products. Only frontend for now made in react tailwind.",
     href: "https://luxara-frontend.vercel.app/",
     icon: ShoppingBag,
     tags: ["React", "TailwindCSS", "Frontend"],
+  },
+  // Home features the first four (Projects.tsx slices), so the four distinct
+  // products lead and the Royal Stay variant sits below them — otherwise the
+  // same product took two of the four featured cards.
+  {
+    title: "Royal Stay Client",
+    description:
+      "A Client Side version of The Royal Stay where diffrent users come and Login with Google and book the cabins. Guest Area where they can update profile and edit bookings",
+    href: "https://royal-stay.vercel.app/",
+    icon: BedSingleIcon,
+    tags: ["Nextjs", "Supabase", "TailwindCSS", "Full-Stack", "Authjs"],
+  },
+  {
+    title: "Pizza Club",
+    description:
+      "A Simple and Cool Pizza app where you can order the diffrent types of pizza with Ordering and Cart Functionality. It's just normal frontend application.",
+    href: "https://pizza--club.vercel.app/",
+    icon: PizzaIcon,
+    tags: ["React", "Redux", "TailwindCSS", "Frontend"],
   },
 ];
 

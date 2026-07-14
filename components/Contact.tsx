@@ -5,7 +5,11 @@ import { Socials } from "@/constants";
 
 function Contact() {
   return (
-    <div className="mt-16 w-full border border-border bg-card p-6 sm:p-8">
+    <div
+      id="contact"
+      data-section="Contact"
+      className="mt-16 w-full scroll-mt-28 border border-border bg-card p-6 sm:p-8"
+    >
       <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
         {"// get in touch"}
       </p>

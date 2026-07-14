@@ -8,10 +8,9 @@ const About = () => {
       <Title title="About" />
       <p className="leading-7 text-muted-foreground">
         Hey! I&apos;m Soham, a 2025 B.Tech IT graduate and full-stack developer.
-        I build seamless web-apps and websites that deliver real value. From
-        designing intuitive interfaces to building scalable back-ends, I&apos;m
-        passionate about delivering impactful digital experiences that people
-        ❤️.
+        From designing intuitive interfaces to building scalable back-ends,
+        I&apos;m passionate about delivering impactful digital experiences that
+        people ❤️.
         <br />
         You can find me on{" "}
         <a

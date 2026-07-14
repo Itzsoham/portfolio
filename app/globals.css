@@ -69,6 +69,13 @@
     @apply bg-background text-foreground;
   }
 
+  /* Tailwind v4 ships buttons with the default cursor; every button here is a
+     real control, so give them all the pointer back. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
   /* Square by design: every corner in the UI is sharp. This backstops the
      utility sweep, so a curve copied in from a snippet or a shadcn primitive
      can't creep back. The navbar/footer notch is a clip-path, not a
@@ -80,9 +87,9 @@
   }
 }
 
-/* Theme switch — the incoming theme is revealed by a circle that grows out of
-   the toggle (see ThemeToggle). Kill the default cross-fade and stack the new
-   snapshot on top so the clip-path animation is what you actually see.
+/* Theme switch — the incoming theme drops from the top edge and sweeps down over
+   the outgoing one (see ThemeToggle). Kill the default cross-fade and stack the
+   new snapshot on top so the clip-path curtain is what you actually see.
    Deliberately unlayered: these must not sit below Tailwind's layers. */
 ::view-transition-old(root),
 ::view-transition-new(root) {

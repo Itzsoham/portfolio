@@ -4,7 +4,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import React from "react";
 
-import { Exprience, Site, Skills, Socials } from "@/constants";
+import { Experience, Site, Skills, Socials } from "@/constants";
 import ThemeProvider from "@/context/Theme";
 
 const OpenSans = localFont({
@@ -97,7 +97,7 @@ const jsonLd = {
         addressLocality: "Ahmedabad",
         addressCountry: "IN",
       },
-      worksFor: Exprience.map((e) => ({
+      worksFor: Experience.map((e) => ({
         "@type": "Organization",
         name: e.company,
         url: e.href,

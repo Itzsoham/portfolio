@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Exprience } from "@/constants";
+import { Experience as Roles } from "@/constants";
 
 import { ResumeCard } from "./cards/ResumeCard";
 import Title from "./ui/Title";
@@ -9,7 +9,7 @@ const Experience = () => {
   return (
     <div className="mt-5">
       <Title title="Experience" />
-      {Exprience.map((work) => (
+      {Roles.map((work) => (
         <ResumeCard
           key={work.company}
           logoUrl={work.logoUrl}

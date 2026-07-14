@@ -2,12 +2,11 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import { Links, Site, Socials } from "@/constants";
+import { Links } from "@/constants";
 import { cn } from "@/lib/utils";
 
 import CommandBar from "./CommandBar";
@@ -67,7 +66,6 @@ const NotchNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const email = Socials.find((s) => s.name === "Email")?.url ?? "#";
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -79,8 +77,12 @@ const NotchNavbar = () => {
           <EdgeLines y={39.5} />
         </div>
 
-        {/* the notch itself — sized by its content */}
-        <div className="relative z-10 -ml-px flex h-16 shrink-0">
+        {/* the notch itself — sized by its content. `data-notch` lets the theme
+            sweep measure this slice and cut its edge to the same silhouette. */}
+        <div
+          data-notch
+          className="relative z-10 -ml-px flex h-16 shrink-0"
+        >
           {/* left concave corner */}
           <div className="relative h-full w-12.5 shrink-0">
             <div
@@ -99,31 +101,58 @@ const NotchNavbar = () => {
               <EdgeLines y={63.5} />
             </div>
 
-            <div className="relative flex size-full items-end justify-between gap-3 px-4 pb-2.5 md:gap-6 md:px-8">
-              {/* desktop nav */}
-              <nav className="hidden shrink-0 items-center gap-6 md:flex">
-                {Links.map((l) => (
-                  <Link
-                    key={l.name}
-                    href={l.link}
-                    className={cn(
-                      "group flex items-center gap-1.5 text-sm font-medium whitespace-nowrap transition-colors",
-                      isActive(l.link)
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
-                  >
-                    <l.icon
+            <div className="relative flex size-full items-end justify-between gap-6 px-4 pb-2.5 md:gap-12 md:px-8">
+              {/* desktop nav — mono index + label, with an indicator that slides
+                  between entries on route change (shared layoutId) */}
+              <nav className="hidden shrink-0 items-end gap-1 md:flex">
+                {Links.map((l, i) => {
+                  const active = isActive(l.link);
+                  return (
+                    <Link
+                      key={l.name}
+                      href={l.link}
+                      aria-current={active ? "page" : undefined}
                       className={cn(
-                        "size-4 transition-colors",
-                        isActive(l.link)
-                          ? "text-accent"
-                          : "opacity-70 group-hover:opacity-100"
+                        "group relative flex items-baseline gap-1.5 px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors",
+                        active
+                          ? "text-foreground"
+                          : "text-muted-foreground hover:text-foreground"
                       )}
-                    />
-                    {l.name}
-                  </Link>
-                ))}
+                    >
+                      {/* hover fill, wipes up from the baseline */}
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 origin-bottom scale-y-0 bg-foreground/5 transition-transform duration-200 ease-out group-hover:scale-y-100"
+                      />
+
+                      <span
+                        aria-hidden
+                        className={cn(
+                          "relative font-mono text-[10px] tabular-nums transition-colors",
+                          active
+                            ? "text-accent"
+                            : "text-muted-foreground/40 group-hover:text-accent/70"
+                        )}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+
+                      <span className="relative">{l.name}</span>
+
+                      {active && (
+                        <motion.span
+                          layoutId="nav-indicator"
+                          transition={{
+                            type: "spring",
+                            stiffness: 420,
+                            damping: 34,
+                          }}
+                          className="absolute inset-x-0 -bottom-0.5 h-[3px] bg-accent shadow-[0_0_10px_hsl(var(--accent)/0.7)]"
+                        />
+                      )}
+                    </Link>
+                  );
+                })}
               </nav>
 
               {/* mobile menu trigger */}
@@ -141,35 +170,11 @@ const NotchNavbar = () => {
                 )}
               </button>
 
-              {/* avatar sits at the deepest point of the notch */}
-              <Link
-                href="/"
-                aria-label={Site.name}
-                className="relative mx-1 size-9 shrink-0 overflow-hidden border border-border bg-muted transition hover:scale-105 md:mx-3"
-              >
-                <Image
-                  src={Site.avatar}
-                  alt={Site.name}
-                  fill
-                  sizes="36px"
-                  className="object-cover"
-                />
-              </Link>
-
-              {/* desktop actions */}
-              <div className="hidden shrink-0 items-center gap-3 md:flex">
+              {/* actions */}
+              <div className="flex shrink-0 items-center gap-2 md:gap-3">
                 <CommandBar />
                 <ThemeToggle />
-                <a
-                  href={email}
-                  className="bg-foreground px-3 py-1.5 text-sm font-medium whitespace-nowrap text-background shadow-sm transition hover:bg-foreground/90"
-                >
-                  Contact
-                </a>
               </div>
-
-              {/* mobile actions */}
-              <ThemeToggle className="md:hidden" />
             </div>
           </div>
 
@@ -202,28 +207,40 @@ const NotchNavbar = () => {
             className="fixed inset-x-0 top-16 z-30 border-b border-border bg-card p-4 shadow-lg md:hidden"
           >
             <nav className="flex flex-col gap-1">
-              {Links.map((l) => (
-                <Link
-                  key={l.name}
-                  href={l.link}
-                  onClick={() => setMenuOpen(false)}
-                  className={cn(
-                    "flex items-center gap-3 p-3 transition-colors hover:bg-foreground/5",
-                    isActive(l.link) ? "text-foreground" : "text-muted-foreground"
-                  )}
-                >
-                  <l.icon className="size-5 opacity-70" />
-                  <span className="font-medium">{l.name}</span>
-                </Link>
-              ))}
-              <div className="my-2 h-px bg-border" />
-              <a
-                href={email}
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-center bg-foreground p-3 font-medium text-background"
-              >
-                Contact
-              </a>
+              {Links.map((l, i) => {
+                const active = isActive(l.link);
+                return (
+                  <Link
+                    key={l.name}
+                    href={l.link}
+                    onClick={() => setMenuOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "flex items-center gap-3 border-l-2 p-3 transition-colors hover:bg-foreground/5",
+                      active
+                        ? "border-accent bg-foreground/4 text-foreground"
+                        : "border-transparent text-muted-foreground"
+                    )}
+                  >
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "font-mono text-[10px] tabular-nums",
+                        active ? "text-accent" : "text-muted-foreground/40"
+                      )}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <l.icon
+                      className={cn(
+                        "size-5",
+                        active ? "text-accent" : "opacity-70"
+                      )}
+                    />
+                    <span className="font-medium">{l.name}</span>
+                  </Link>
+                );
+              })}
             </nav>
           </motion.div>
         )}

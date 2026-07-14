@@ -3,17 +3,46 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { type MouseEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { flushSync } from "react-dom";
 
+import { DEPTH, NOTCH_ATTR, notchEdgePath } from "@/lib/notch";
 import { cn } from "@/lib/utils";
 
 /**
- * Theme switch. The new theme is revealed as a circle wiping out of the button
- * (View Transitions API) rather than snapping. Browsers without
- * `startViewTransition`, and anyone who asked for reduced motion, just get the
- * instant swap — the icon still cross-fades either way.
+ * Theme switch. The incoming theme drops in from the top of the viewport behind
+ * an edge cut to the navbar's own silhouette — shoulders with the notch well
+ * dipping below them — and sweeps down until it fills the screen (View
+ * Transitions API). Browsers without `startViewTransition`, and anyone who asked
+ * for reduced motion, just get the instant swap; the icon still animates either
+ * way.
  */
+
+/** the sweep is emitted as a path per step so the browser has a matching command list to tween */
+const STEPS = 20;
+
+const sweepFrames = () => {
+  const viewport = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
+
+  const el = document.querySelector<HTMLElement>(`[${NOTCH_ATTR}]`);
+  const rect = el?.getBoundingClientRect();
+  const notch = rect
+    ? { left: rect.left, width: rect.width }
+    : { left: 0, width: 0 }; // no navbar on screen → flat edge
+
+  // the edge starts above the top lip (nothing revealed) and falls until the
+  // shoulders have cleared the bottom of the screen (everything revealed)
+  const from = -DEPTH - 2;
+  const to = viewport.height;
+
+  return Array.from({ length: STEPS + 1 }, (_, i) => ({
+    clipPath: notchEdgePath(from + (i / STEPS) * (to - from), viewport, notch),
+  }));
+};
+
 const ThemeToggle = ({ className }: { className?: string }) => {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -24,7 +53,7 @@ const ThemeToggle = ({ className }: { className?: string }) => {
 
   const isDark = resolvedTheme === "dark";
 
-  const toggle = async (e: MouseEvent<HTMLButtonElement>) => {
+  const toggle = async () => {
     const next = isDark ? "light" : "dark";
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -35,33 +64,25 @@ const ThemeToggle = ({ className }: { className?: string }) => {
       return;
     }
 
-    // grow the circle from the button's centre out to the furthest corner
-    const { top, left, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = left + width / 2;
-    const y = top + height / 2;
-    const radius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
-
     // flushSync so the DOM already carries the new theme when the snapshot is taken
     const transition = document.startViewTransition(() => {
       flushSync(() => setTheme(next));
     });
     await transition.ready;
 
+    const duration = 700;
+    const easing = "cubic-bezier(0.65, 0, 0.35, 1)";
+
+    document.documentElement.animate(sweepFrames(), {
+      duration,
+      easing,
+      pseudoElement: "::view-transition-new(root)",
+    });
+
+    // the outgoing theme drifts down behind the sweep, so the two read as one move
     document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${radius}px at ${x}px ${y}px)`,
-        ],
-      },
-      {
-        duration: 550,
-        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-        pseudoElement: "::view-transition-new(root)",
-      }
+      { transform: ["translateY(0)", "translateY(3rem)"] },
+      { duration, easing, pseudoElement: "::view-transition-old(root)" }
     );
   };
 
@@ -71,7 +92,7 @@ const ThemeToggle = ({ className }: { className?: string }) => {
       onClick={toggle}
       aria-label="Toggle theme"
       className={cn(
-        "grid size-8 shrink-0 place-items-center text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground",
+        "relative grid size-8 shrink-0 place-items-center overflow-hidden text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground",
         className
       )}
     >
@@ -79,10 +100,10 @@ const ThemeToggle = ({ className }: { className?: string }) => {
         {mounted && (
           <motion.span
             key={isDark ? "sun" : "moon"}
-            initial={{ rotate: -90, scale: 0, opacity: 0 }}
-            animate={{ rotate: 0, scale: 1, opacity: 1 }}
-            exit={{ rotate: 90, scale: 0, opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            initial={{ y: -14, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 14, opacity: 0 }}
+            transition={{ duration: 0.22, ease: [0.65, 0, 0.35, 1] }}
             className="grid place-items-center"
           >
             {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
