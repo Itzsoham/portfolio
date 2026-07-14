@@ -28,10 +28,12 @@ export interface linksType {
   link: string;
 }
 
-/** Site-wide identity used by the shell (breadcrumb, footer, command bar). */
+/** Site-wide identity used by the shell (breadcrumb, footer, command bar) and by SEO. */
 export const Site = {
   name: "Soham Maury",
   domain: "sohammaury.me",
+  /** Absolute origin. Set NEXT_PUBLIC_SITE_URL per-environment; this is the prod fallback. */
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://sohammaury.me",
   role: "Full-Stack Developer",
   tagline:
     "I build seamless web-apps and websites that deliver real value — from intuitive interfaces to scalable back-ends.",

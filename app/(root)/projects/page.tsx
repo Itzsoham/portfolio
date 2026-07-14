@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 
@@ -8,6 +9,20 @@ import Breadcrumb from "@/components/shell/Breadcrumb";
 import Hatch from "@/components/shell/Hatch";
 import Title from "@/components/ui/Title";
 import { Projects as ProjectData, UpcomingProjects } from "@/constants";
+
+const description =
+  "Full-stack projects by Soham Maury — hotel management, expense tracking, an LMS, and e-commerce. Built with React, Next.js, Supabase, Node.js and AWS. Most are deployed and live.";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description,
+  alternates: { canonical: "/projects" },
+  openGraph: {
+    title: "Projects — Soham Maury",
+    description,
+    url: "/projects",
+  },
+};
 
 const Projects = () => {
   return (

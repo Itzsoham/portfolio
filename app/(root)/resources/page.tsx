@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import React from "react";
 
 import ResourcesCard from "@/components/cards/ResourcesCard";
@@ -6,6 +7,20 @@ import Breadcrumb from "@/components/shell/Breadcrumb";
 import Hatch from "@/components/shell/Hatch";
 import Title from "@/components/ui/Title";
 import { Resources as ResourcesData } from "@/constants";
+
+const description =
+  "A collected set of developer resources — learning tracks, useful sites, GitHub and job-hunt guides, and design references — gathered by Soham Maury.";
+
+export const metadata: Metadata = {
+  title: "Resources",
+  description,
+  alternates: { canonical: "/resources" },
+  openGraph: {
+    title: "Resources — Soham Maury",
+    description,
+    url: "/resources",
+  },
+};
 
 const Resources = () => {
   return (
