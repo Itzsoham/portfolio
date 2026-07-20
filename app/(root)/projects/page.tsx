@@ -52,9 +52,10 @@ const Projects = () => {
 
       <Title title="Full-Stack" />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {ProjectData.map((project) => (
+        {ProjectData.map((project, index) => (
           <ProjectCard
             key={project.title}
+            index={index}
             title={project.title}
             description={project.description}
             href={project.href}
@@ -75,10 +76,12 @@ const Projects = () => {
       </a>
 
       <Title title="Upcoming" />
+      {/* Upcoming is its own sheet, so its numbering restarts at 01. */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {UpcomingProjects.map((project) => (
+        {UpcomingProjects.map((project, index) => (
           <ProjectCard
             key={project.title}
+            index={index}
             title={project.title}
             description={project.description}
             href={project.href}

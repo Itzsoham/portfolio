@@ -118,6 +118,21 @@
     background-size: 16px 16px;
   }
 
+  /* ProjectCard's drafting grid — the same 16px lattice as .bg-dots, inked in
+     accent instead of border. .bg-dots is drawn in --border, which works as
+     filler on the page background but disappears on a card: #27272a dots on a
+     #18181b card in dark, #e7e5e4 on white in light. The card uncovers this on
+     hover, so it has to actually be seen — and tinting it accent keeps the whole
+     hover gesture on a single hue. */
+  .bg-dots-accent {
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--accent) / 0.3) 1px,
+      transparent 1px
+    );
+    background-size: 16px 16px;
+  }
+
   /* diagonal hatch band, used as a section divider */
   .hatch {
     background-image: repeating-linear-gradient(
