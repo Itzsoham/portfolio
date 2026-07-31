@@ -16,10 +16,7 @@ const Skill = () => {
             </p>
             <div className="flex flex-wrap gap-2">
               {group.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="border border-border bg-card px-2.5 py-1 font-mono text-xs text-muted-foreground transition hover:border-accent/40 hover:text-foreground"
-                >
+                <span key={skill} className="chip hover:bg-muted hover:text-foreground">
                   {skill}
                 </span>
               ))}

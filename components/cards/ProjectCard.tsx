@@ -44,7 +44,7 @@ export default function ProjectCard({
     typeof index === "number" ? String(index + 1).padStart(2, "0") : null;
 
   return (
-    <div className="border-b border-border py-7 first:pt-0 last:border-b-0">
+    <div className="border-b border-border/70 py-8 last:border-b-0">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1.5">
         <div className="flex items-baseline gap-3">
           {sheet && (
@@ -71,10 +71,7 @@ export default function ProjectCard({
 
       <ul className="mt-4 flex flex-wrap gap-1.5">
         {tags.map((tag) => (
-          <li
-            key={tag}
-            className="border border-border bg-background px-1.5 py-0.5 font-mono text-[11px] text-muted-foreground"
-          >
+          <li key={tag} className="chip">
             {tag}
           </li>
         ))}

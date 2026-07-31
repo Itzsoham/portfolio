@@ -16,7 +16,7 @@
     --secondary-foreground: 240 6% 26%;
     --muted: 60 5% 92%;
     --muted-foreground: 240 4% 46%; /* #71717a zinc-500 */
-    --accent: 217 91% 60%; /* #3b82f6 blue-500 */
+    --accent: 217 91% 60%; /* #3b82f6 blue-500 — reads well as text/links on the warm-gray canvas */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -46,7 +46,7 @@
     --secondary-foreground: 0 0% 98%;
     --muted: 240 4% 16%;
     --muted-foreground: 240 5% 65%; /* #a1a1aa zinc-400 */
-    --accent: 213 94% 68%; /* #60a5fa blue-400 */
+    --accent: 213 94% 68%; /* #60a5fa blue-400 — lifted for contrast on near-black */
     --accent-foreground: 240 6% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -118,21 +118,6 @@
     background-size: 16px 16px;
   }
 
-  /* ProjectCard's drafting grid — the same 16px lattice as .bg-dots, inked in
-     accent instead of border. .bg-dots is drawn in --border, which works as
-     filler on the page background but disappears on a card: #27272a dots on a
-     #18181b card in dark, #e7e5e4 on white in light. The card uncovers this on
-     hover, so it has to actually be seen — and tinting it accent keeps the whole
-     hover gesture on a single hue. */
-  .bg-dots-accent {
-    background-image: radial-gradient(
-      circle,
-      hsl(var(--accent) / 0.3) 1px,
-      transparent 1px
-    );
-    background-size: 16px 16px;
-  }
-
   /* diagonal hatch band, used as a section divider */
   .hatch {
     background-image: repeating-linear-gradient(
@@ -147,5 +132,11 @@
   /* shimmering skeleton placeholder block */
   .skeleton {
     @apply animate-pulse bg-muted;
+  }
+
+  /* borderless mono chip — skill/stack tags. A fill instead of a border reads
+     quieter when a dozen of these sit in a row (Skills, Experience, Projects). */
+  .chip {
+    @apply bg-muted/60 px-2 py-1 font-mono text-[11px] tracking-wide text-muted-foreground transition-colors;
   }
 }

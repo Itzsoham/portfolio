@@ -31,10 +31,10 @@ const ProjectsExplorer = ({ projects }: { projects: ProjectEntry[] }) => {
             onClick={() => setActive(category)}
             aria-pressed={active === category}
             className={cn(
-              "border px-3 py-1.5 font-mono text-xs transition",
+              "border px-3 py-1.5 font-mono text-xs transition-colors",
               active === category
-                ? "border-foreground bg-foreground text-background"
-                : "border-border bg-card text-muted-foreground hover:border-accent/40 hover:text-foreground"
+                ? "border-accent/40 bg-accent/10 text-accent"
+                : "border-border bg-transparent text-muted-foreground hover:border-accent/30 hover:text-foreground"
             )}
           >
             {category}

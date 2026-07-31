@@ -14,7 +14,7 @@ const ExperienceRow = ({ entry }: { entry: ExperienceEntry }) => {
     entry;
 
   return (
-    <div className="grid grid-cols-1 gap-x-6 gap-y-2 border-b border-border py-6 first:pt-0 last:border-b-0 sm:grid-cols-[136px_1fr]">
+    <div className="grid grid-cols-1 gap-x-6 gap-y-2 border-b border-border/70 py-8 last:border-b-0 sm:grid-cols-[136px_1fr]">
       <div className="font-mono text-xs text-muted-foreground">
         <div className="tabular-nums">
           {start} – {end ?? "Present"}
@@ -54,10 +54,7 @@ const ExperienceRow = ({ entry }: { entry: ExperienceEntry }) => {
 
         <ul className="mt-4 flex flex-wrap gap-1.5">
           {tags.map((tag) => (
-            <li
-              key={tag}
-              className="border border-border bg-background px-1.5 py-0.5 font-mono text-[11px] text-muted-foreground"
-            >
+            <li key={tag} className="chip">
               {tag}
             </li>
           ))}
