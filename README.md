@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Soham Maury — Portfolio
 
-## Getting Started
+Personal portfolio built as a developer `README.md` / terminal-styled site. Next.js App Router, Tailwind, and no CMS — all content lives in one file.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (Turbopack dev), React 19, TypeScript
+- Tailwind CSS v4
+- Upstash Redis — real visitor counter (optional, falls back to a static number without it)
+- Vercel Analytics + Vercel deployment
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts: `npm run build`, `npm run start`, `npm run lint`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing content
 
-## Learn More
+Everything you'd normally hunt across pages for — name, bio, socials, skills, experience, projects — lives in **[constants/index.ts](constants/index.ts)**. Change the data there; the components (`About`, `Skill`, `Experience`, `Projects`, `Contact`, the sidebar, the footer) just render it.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copy `.env.example` to `.env.local` and fill in what you need — everything is optional, the site runs fine with none of it set:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable | Required for | Fallback if unset |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | canonical URLs, OG tags, sitemap | `https://sohammaury.me` (hardcoded in `constants/index.ts`) |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | real visitor counter | static `Site.visitorCount` number in the footer |
 
-## Deploy on Vercel
+### Wiring up the visitor counter
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. In the Vercel dashboard: **Storage → Marketplace → connect a Redis integration (Upstash)** to this project. That injects `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` into the project's env vars automatically.
+2. Locally, run `vercel env pull .env.local` to pull those same vars down (or copy them by hand from the dashboard).
+3. That's it — `app/api/visits/route.ts` increments and reads the count on each page load; the footer fetches it client-side. No schema, no setup beyond the two env vars.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+It's a raw hit counter (every page load bumps it), not de-duped per unique visitor — intentionally, in keeping with the "you are the Nth visitor" webring-counter joke in the footer copy.
+
+## Deployment
+
+Deploys on [Vercel](https://vercel.com/new). Connect the Upstash integration there too if you want the real counter in production.

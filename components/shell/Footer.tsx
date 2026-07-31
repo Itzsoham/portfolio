@@ -2,6 +2,7 @@
 
 import { ArrowUp, Eye } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { Site, Socials } from "@/constants";
 
@@ -59,6 +60,21 @@ const CornerLines = ({ d, inner }: { d: string; inner: string }) => (
 
 const Footer = () => {
   const thanksHref = Socials.find((s) => s.name === "X")?.url ?? "#";
+
+  // Site.visitorCount is the fallback shown until the real count lands (or if
+  // Redis isn't configured, e.g. in local dev with no env vars pulled yet).
+  const [visitorCount, setVisitorCount] = useState(Site.visitorCount);
+
+  useEffect(() => {
+    fetch("/api/visits", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (typeof data?.count === "number") setVisitorCount(data.count);
+      })
+      .catch(() => {
+        // stays on the static fallback
+      });
+  }, []);
 
   return (
     <footer className="w-full">
@@ -145,7 +161,7 @@ const Footer = () => {
             <Eye className="size-3.5" />
             You are the{" "}
             <span className="tabular-nums text-foreground">
-              {ordinal(Site.visitorCount)}
+              {ordinal(visitorCount)}
             </span>{" "}
             visitor
           </span>
