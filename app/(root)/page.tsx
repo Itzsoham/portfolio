@@ -1,6 +1,5 @@
 import React from "react";
 
-import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Header from "@/components/Header";
@@ -18,10 +17,9 @@ const Root = () => {
         <Hatch />
       </div>
 
-      <About />
-      <Projects />
-      <Experience />
       <Skill />
+      <Experience />
+      <Projects />
 
       <div className="mt-12">
         <TypingTest />

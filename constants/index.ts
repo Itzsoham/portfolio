@@ -1,17 +1,4 @@
-import {
-  BanknoteIcon,
-  BedDoubleIcon,
-  BedSingleIcon,
-  BookMarked,
-  BookOpenText,
-  FolderGit2,
-  House,
-  Laptop,
-  Mail,
-  PizzaIcon,
-  ShoppingBag,
-  ShoppingCartIcon,
-} from "lucide-react";
+import { BookMarked, FolderGit2, House, Mail } from "lucide-react";
 import type React from "react";
 
 import {
@@ -36,14 +23,14 @@ export const Site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://sohammaury.me",
   role: "Full-Stack Developer",
   tagline:
-    "I build seamless web-apps and websites that deliver real value — from intuitive interfaces to scalable back-ends.",
-  bio: "Full-stack developer who builds seamless web apps — from intuitive interfaces to scalable back-ends.",
+    "Three years of experience building end-to-end web apps — React/Next.js on the front, Node.js/Prisma on the back — across enterprise SaaS, ERP systems, and AI-powered platforms.",
+  bio: "Full-stack developer with 3 years of experience building React/Next.js frontends and Node.js/Prisma backends across enterprise SaaS, ERP systems, and AI-powered platforms.",
   greeting: "Heyy!",
   location: "Ahmedabad, IN",
   /** drives the status dot in the hero front-matter and the sidebar card */
   openToWork: true,
   /** the short stack line in the hero front-matter — the headline six, not every skill */
-  stack: ["TypeScript", "React", "Next.js", "Node.js", "Postgres", "AWS"],
+  stack: ["TypeScript", "React", "Next.js", "Node.js", "Prisma", "PostgreSQL"],
   /**
    * Path to the résumé in /public, e.g. "/soham-maury-resume.pdf". While this is
    * null the Résumé buttons don't render at all — drop the PDF in and set this,
@@ -120,106 +107,170 @@ export const Links: { name: string; link: string; icon: SocialIcon }[] = [
   // },
 ];
 
-export const Experience = [
+export interface ExperienceEntry {
+  company: string;
+  href: string;
+  location: string;
+  title: string;
+  start: string;
+  end: string | null;
+  /** lede shown under the title, before the bullet list */
+  description: string;
+  bullets: string[];
+  tags: string[];
+}
+
+export const Experience: ExperienceEntry[] = [
   {
-    company: "ZenDevX",
-    href: "https://zendevx.com",
-    badges: [],
+    company: "Neminath Technologies",
+    href: "https://neminathtech.com",
     location: "Ahmedabad, India",
-    title: "Software Developer",
-    logoUrl: "/zendevx.png",
+    title: "Frontend Lead",
+    start: "May 2025",
+    end: null,
+    description:
+      "Leading frontend development across 6+ enterprise applications — Task Management, HRM, CRM, Recruitment, and Audit platforms — serving 1,000+ active users across multiple organizations.",
+    bullets: [
+      "Architected Micro-Frontend modules and created 50+ reusable UI components, form builders, dashboards, and workflow modules, accelerating feature delivery across multiple products.",
+      "Built a Claude Code prompt kit with adversarial review subagents and PreToolUse hooks to autonomously generate an invoice print template system, and set up CLAUDE.md scaffolding across the monorepo's backend services.",
+      "Established CI-driven testing pipelines using React Testing Library and Playwright, reducing regression issues across 6+ enterprise applications and increasing release confidence.",
+      "Mentored 4 interns and junior developers through code reviews and technical guidance, improving code quality and accelerating onboarding for new team members.",
+    ],
+    tags: ["React.js", "Next.js", "TypeScript", "Micro-Frontends", "Playwright", "Claude Code"],
+  },
+  {
+    company: "ZenDevX Solutions Pvt. Ltd.",
+    href: "https://zendevx.com",
+    location: "Ahmedabad, India",
+    title: "Full-Stack Developer",
     start: "Sep 2023",
-    end: "Present",
+    end: "Apr 2025",
     description:
-      "Make the ERP systems for the clients and work on the projects. Mainly work with React frontend and Node.js backend with MySQL database. Daily interaction with the clients and work on different different projects. I did testing of No code tool and help it generate the right code for the project and train the other interns.",
+      "Delivered ERP, CRM, and Inventory Management systems for 7+ clients, collaborating directly with clients to translate business requirements into production-ready solutions.",
+    bullets: [
+      "Designed responsive dashboards and workflow automation tools, cutting reporting time and manual errors by 30–50% for business users.",
+      "Enhanced a no-code platform generating applications across 2 stacks (MERN, Next.js) with 3 database backends (MongoDB, MySQL, PostgreSQL), accelerating development through auto-generated code scaffolding.",
+    ],
+    tags: ["React", "Next.js", "Node.js", "MongoDB", "MySQL"],
   },
 ];
 
-export const Skills = [
-  "Javascript",
-  "Typescript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Express",
-  "Prisma",
-  "Postgres",
-  "MySQL",
-  "MongoDB",
-  "Supabase",
-  "AWS",
-];
+export interface SkillGroup {
+  label: string;
+  skills: string[];
+}
 
-export const Projects = [
+export const SkillGroups: SkillGroup[] = [
   {
-    title: "Royal Stay",
-    description:
-      "A badass hotel management system where you can book cabins, view amenities, and much more. Full-stack application with good charts and graphs.",
-    href: "https://royalstay.vercel.app/",
-    icon: BedDoubleIcon,
-    tags: ["React", "Supabase", "TailwindCSS", "Full-Stack"],
+    label: "Frontend",
+    skills: [
+      "TypeScript",
+      "React.js",
+      "Next.js",
+      "Redux Toolkit",
+      "React Query",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Framer Motion",
+    ],
   },
   {
-    title: "Finex",
+    label: "Backend & APIs",
+    skills: [
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "tRPC",
+      "Prisma",
+      "WebSocket",
+      "Vercel AI SDK",
+      "Gemini",
+    ],
+  },
+  {
+    label: "Databases",
+    skills: ["PostgreSQL", "MongoDB", "MySQL", "DynamoDB", "Supabase"],
+  },
+  {
+    label: "Tools & Testing",
+    skills: [
+      "Git",
+      "Docker",
+      "Vercel",
+      "Playwright",
+      "React Testing Library",
+      "Figma",
+      "Claude Code",
+    ],
+  },
+];
+
+/** flattened for places that just need "every skill" — SEO keywords, JSON-LD */
+export const Skills = SkillGroups.flatMap((g) => g.skills);
+
+export interface ProjectEntry {
+  title: string;
+  tagline: string;
+  description: string;
+  /** deployed URL, if there's one that's actually live right now */
+  liveHref?: string;
+  /** source repo URL */
+  codeHref?: string;
+  tags: string[];
+  category: "AI" | "Web";
+}
+
+export const Projects: ProjectEntry[] = [
+  {
+    title: "Operato",
+    tagline: "AI-powered restaurant SaaS — POS, inventory & analytics",
     description:
-      "A Expense management system where you can handle expence of multiple users also Admin Access with Charts view amenities, and much more. Full-stack application with good charts and graphs.",
-    href: "https://shreejic.vercel.app/",
-    icon: BanknoteIcon,
-    tags: ["React", "Supabase", "Material UI", "Full-Stack"],
+      "Architecting a multi-tenant SaaS platform with tenant-isolated PostgreSQL data modeling via Prisma, spanning POS, inventory, and business analytics. Ships a natural-language-to-SQL query assistant and a scheduled weekly business summary generator powered by Gemini.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Vercel AI SDK",
+      "Gemini",
+      "Better Auth",
+      "Razorpay",
+    ],
+    category: "AI",
+  },
+  {
+    title: "My Piano Diary",
+    tagline: "Scheduling & billing platform for a piano teacher's studio",
+    description:
+      "Full-stack scheduling and billing platform built with tRPC and Prisma — timezone-aware lesson scheduling, attendance and payment tracking, and a live earnings dashboard. In active use by a piano teacher for 4+ months.",
+    tags: ["Next.js", "TypeScript", "tRPC", "Prisma", "PostgreSQL"],
+    category: "Web",
   },
   {
     title: "Skillza",
+    tagline: "Course creation & purchasing platform for instructors and students",
     description:
-      " A learning management system where you can post your own course as teacher and other user can enroll in the course and learn from it. Full-stack application with awesome UI and features.",
-    href: "https://skillza.vercel.app/",
-    icon: BookOpenText,
-    tags: ["Next", "AWS", "Shadcn UI", "Full-Stack"],
+      "Learning management platform with instructor course creation, student purchasing, AWS-powered media storage, and course dashboards.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Redux",
+      "Node.js",
+      "AWS S3",
+      "AWS Lambda",
+      "DynamoDB",
+      "Clerk",
+    ],
+    category: "Web",
   },
   {
-    title: "Luxara - Frontend",
+    title: "The Royal Stay",
+    tagline: "Booking, cabin admin & guest reservations across two portals",
     description:
-      "Frontend of client side of Luxara E-commerce platform where you can sell your products. Only frontend for now made in react tailwind.",
-    href: "https://luxara-frontend.vercel.app/",
-    icon: ShoppingBag,
-    tags: ["React", "TailwindCSS", "Frontend"],
-  },
-  // Home features the first four (Projects.tsx slices), so the four distinct
-  // products lead and the Royal Stay variant sits below them — otherwise the
-  // same product took two of the four featured cards.
-  {
-    title: "Royal Stay Client",
-    description:
-      "A Client Side version of The Royal Stay where diffrent users come and Login with Google and book the cabins. Guest Area where they can update profile and edit bookings",
-    href: "https://royal-stay.vercel.app/",
-    icon: BedSingleIcon,
-    tags: ["Nextjs", "Supabase", "TailwindCSS", "Full-Stack", "Authjs"],
-  },
-  {
-    title: "Pizza Club",
-    description:
-      "A Simple and Cool Pizza app where you can order the diffrent types of pizza with Ordering and Cart Functionality. It's just normal frontend application.",
-    href: "https://pizza--club.vercel.app/",
-    icon: PizzaIcon,
-    tags: ["React", "Redux", "TailwindCSS", "Frontend"],
-  },
-];
-
-export const UpcomingProjects = [
-  {
-    title: "Luxara - Full stack",
-    description:
-      "A SaSS E-commerce platform where you can sell your products and manage your inventory. Full-stack application with good charts and graphs.",
-    href: "https://www.github.com/itzsoham/",
-    icon: ShoppingCartIcon,
-    tags: ["Next", "Prisma", "Mono repo", "TailwindCSS", "Full-Stack"],
-  },
-  {
-    title: "Project Hunt",
-    description:
-      "A platform where you can post your projects and project ideas. ther user can see and upvote the project and also comment on it. Full-stack app with community and other features.",
-    href: "https://www.github.com/itzsoham/",
-    icon: Laptop,
-    tags: ["Next", "Prisma", "Mono repo", "TailwindCSS", "Full-Stack"],
+      "Full-stack hotel management platform featuring booking management, cabin administration, and customer reservations across admin and client portals.",
+    liveHref: "https://royalstay.vercel.app/",
+    tags: ["Next.js", "TypeScript", "NextAuth", "React Query", "Tailwind CSS"],
+    category: "Web",
   },
 ];
 

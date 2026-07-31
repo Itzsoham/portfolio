@@ -3,15 +3,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 
-import ProjectCard from "@/components/cards/ProjectCard";
 import Contact from "@/components/Contact";
+import ProjectsExplorer from "@/components/ProjectsExplorer";
 import Breadcrumb from "@/components/shell/Breadcrumb";
 import Hatch from "@/components/shell/Hatch";
-import Title from "@/components/ui/Title";
-import { Projects as ProjectData, UpcomingProjects } from "@/constants";
+import { Projects as ProjectData } from "@/constants";
 
 const description =
-  "Full-stack projects by Soham Maury — hotel management, expense tracking, an LMS, and e-commerce. Built with React, Next.js, Supabase, Node.js and AWS. Most are deployed and live.";
+  "Full-stack projects by Soham Maury — an AI-powered restaurant SaaS, a piano lesson manager, an LMS, and a hotel management platform. Built with Next.js, TypeScript, Prisma and the Vercel AI SDK.";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -34,8 +33,8 @@ const Projects = () => {
           Projects
         </h1>
         <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
-          I&apos;ve built many projects — some for learning, some for fun. The
-          best ones are here.{" "}
+          I&apos;ve built many projects — some for work, some for fun. The best
+          ones are here.{" "}
           <Link
             href="https://www.github.com/itzsoham"
             className="font-semibold text-accent hover:underline"
@@ -50,20 +49,7 @@ const Projects = () => {
         <Hatch />
       </div>
 
-      <Title title="Full-Stack" />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {ProjectData.map((project, index) => (
-          <ProjectCard
-            key={project.title}
-            index={index}
-            title={project.title}
-            description={project.description}
-            href={project.href}
-            tags={project.tags}
-            icon={React.createElement(project.icon, { className: "size-6" })}
-          />
-        ))}
-      </div>
+      <ProjectsExplorer projects={ProjectData} />
 
       <a
         href="https://github.com/itzsoham"
@@ -74,22 +60,6 @@ const Projects = () => {
         See all on GitHub
         <ArrowUpRight className="size-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
       </a>
-
-      <Title title="Upcoming" />
-      {/* Upcoming is its own sheet, so its numbering restarts at 01. */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {UpcomingProjects.map((project, index) => (
-          <ProjectCard
-            key={project.title}
-            index={index}
-            title={project.title}
-            description={project.description}
-            href={project.href}
-            tags={project.tags}
-            icon={React.createElement(project.icon, { className: "size-6" })}
-          />
-        ))}
-      </div>
 
       <Contact />
     </div>

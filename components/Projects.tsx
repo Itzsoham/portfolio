@@ -7,19 +7,22 @@ import More from "./ui/More";
 import Title from "./ui/Title";
 
 const Projects = () => {
+  const featured = ProjectData.slice(0, 3);
+
   return (
     <div>
       <Title title="Projects" />
-      <div className="my-5 grid grid-cols-1 gap-4 md:grid-cols-2">
-        {ProjectData.slice(0, 4).map((project, index) => (
+      <div className="border-t border-border">
+        {featured.map((project, index) => (
           <ProjectCard
             key={project.title}
             index={index}
             title={project.title}
+            tagline={project.tagline}
             description={project.description}
-            href={project.href}
             tags={project.tags}
-            icon={React.createElement(project.icon, { className: "size-6" })}
+            liveHref={project.liveHref}
+            codeHref={project.codeHref}
           />
         ))}
       </div>
