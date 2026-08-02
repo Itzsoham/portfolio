@@ -5,43 +5,14 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { flushSync } from "react-dom";
-
-import { DEPTH, NOTCH_ATTR, notchEdgePath } from "@/lib/notch";
 import { cn } from "@/lib/utils";
 
 /**
- * Theme switch. The incoming theme drops in from the top of the viewport behind
- * an edge cut to the navbar's own silhouette — shoulders with the notch well
- * dipping below them — and sweeps down until it fills the screen (View
- * Transitions API). Browsers without `startViewTransition`, and anyone who asked
- * for reduced motion, just get the instant swap; the icon still animates either
- * way.
+ * Theme switch. The incoming theme cross-fades and slides into place via the
+ * browser's View Transitions API. Browsers without `startViewTransition`, and
+ * anyone who asked for reduced motion, just get the instant swap; the icon
+ * still animates either way.
  */
-
-/** the sweep is emitted as a path per step so the browser has a matching command list to tween */
-const STEPS = 20;
-
-const sweepFrames = () => {
-  const viewport = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-  };
-
-  const el = document.querySelector<HTMLElement>(`[${NOTCH_ATTR}]`);
-  const rect = el?.getBoundingClientRect();
-  const notch = rect
-    ? { left: rect.left, width: rect.width }
-    : { left: 0, width: 0 }; // no navbar on screen → flat edge
-
-  // the edge starts above the top lip (nothing revealed) and falls until the
-  // shoulders have cleared the bottom of the screen (everything revealed)
-  const from = -DEPTH - 2;
-  const to = viewport.height;
-
-  return Array.from({ length: STEPS + 1 }, (_, i) => ({
-    clipPath: notchEdgePath(from + (i / STEPS) * (to - from), viewport, notch),
-  }));
-};
 
 const ThemeToggle = ({ className }: { className?: string }) => {
   const { resolvedTheme, setTheme } = useTheme();
@@ -77,18 +48,6 @@ const ThemeToggle = ({ className }: { className?: string }) => {
       const transition = document.startViewTransition(() => {
         flushSync(() => setTheme(next));
       });
-      await transition.ready;
-
-      const duration = 700;
-      const easing = "cubic-bezier(0.65, 0, 0.35, 1)";
-
-      document.documentElement.animate(sweepFrames(), {
-        duration,
-        easing,
-        pseudoElement: "::view-transition-new(root)",
-      });
-
-      // Keep the root snapshots exclusive until the browser has released them.
       await transition.finished;
     } finally {
       setIsTransitioning(false);
