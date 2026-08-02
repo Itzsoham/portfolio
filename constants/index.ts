@@ -18,9 +18,9 @@ export interface linksType {
 /** Site-wide identity used by the shell (breadcrumb, footer, command bar) and by SEO. */
 export const Site = {
   name: "Soham Maury",
-  domain: "sohammaury.me",
+  domain: "itzsoham.vercel.app",
   /** Absolute origin. Set NEXT_PUBLIC_SITE_URL per-environment; this is the prod fallback. */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://sohammaury.me",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://itzsoham.vercel.app",
   role: "Full-Stack Developer",
   tagline:
     "Three years of experience building end-to-end web apps — React/Next.js on the front, Node.js/Prisma on the back — across enterprise SaaS, ERP systems, and AI-powered platforms.",
@@ -136,7 +136,14 @@ export const Experience: ExperienceEntry[] = [
       "Established CI-driven testing pipelines using React Testing Library and Playwright, reducing regression issues across 6+ enterprise applications and increasing release confidence.",
       "Mentored 4 interns and junior developers through code reviews and technical guidance, improving code quality and accelerating onboarding for new team members.",
     ],
-    tags: ["React.js", "Next.js", "TypeScript", "Micro-Frontends", "Playwright", "Claude Code"],
+    tags: [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Micro-Frontends",
+      "Playwright",
+      "Claude Code",
+    ],
   },
   {
     company: "ZenDevX Solutions Pvt. Ltd.",
@@ -248,7 +255,8 @@ export const Projects: ProjectEntry[] = [
   },
   {
     title: "Skillza",
-    tagline: "Course creation & purchasing platform for instructors and students",
+    tagline:
+      "Course creation & purchasing platform for instructors and students",
     description:
       "Learning management platform with instructor course creation, student purchasing, AWS-powered media storage, and course dashboards.",
     tags: [

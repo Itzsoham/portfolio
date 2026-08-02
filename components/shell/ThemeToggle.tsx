@@ -46,6 +46,7 @@ const sweepFrames = () => {
 const ThemeToggle = ({ className }: { className?: string }) => {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // next-themes mount guard to avoid a hydration mismatch on the icon
   // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -54,6 +55,11 @@ const ThemeToggle = ({ className }: { className?: string }) => {
   const isDark = resolvedTheme === "dark";
 
   const toggle = async () => {
+    // A View Transition owns the root pseudo-elements until it finishes. Starting
+    // another one while those snapshots are still animating leaves the two theme
+    // states stacked on top of each other, so ignore repeat clicks for one sweep.
+    if (isTransitioning) return;
+
     const next = isDark ? "light" : "dark";
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -64,26 +70,29 @@ const ThemeToggle = ({ className }: { className?: string }) => {
       return;
     }
 
-    // flushSync so the DOM already carries the new theme when the snapshot is taken
-    const transition = document.startViewTransition(() => {
-      flushSync(() => setTheme(next));
-    });
-    await transition.ready;
+    setIsTransitioning(true);
 
-    const duration = 700;
-    const easing = "cubic-bezier(0.65, 0, 0.35, 1)";
+    try {
+      // flushSync so the DOM already carries the new theme when the snapshot is taken
+      const transition = document.startViewTransition(() => {
+        flushSync(() => setTheme(next));
+      });
+      await transition.ready;
 
-    document.documentElement.animate(sweepFrames(), {
-      duration,
-      easing,
-      pseudoElement: "::view-transition-new(root)",
-    });
+      const duration = 700;
+      const easing = "cubic-bezier(0.65, 0, 0.35, 1)";
 
-    // the outgoing theme drifts down behind the sweep, so the two read as one move
-    document.documentElement.animate(
-      { transform: ["translateY(0)", "translateY(3rem)"] },
-      { duration, easing, pseudoElement: "::view-transition-old(root)" }
-    );
+      document.documentElement.animate(sweepFrames(), {
+        duration,
+        easing,
+        pseudoElement: "::view-transition-new(root)",
+      });
+
+      // Keep the root snapshots exclusive until the browser has released them.
+      await transition.finished;
+    } finally {
+      setIsTransitioning(false);
+    }
   };
 
   return (
@@ -91,8 +100,10 @@ const ThemeToggle = ({ className }: { className?: string }) => {
       type="button"
       onClick={toggle}
       aria-label="Toggle theme"
+      aria-busy={isTransitioning}
+      disabled={isTransitioning}
       className={cn(
-        "relative grid size-8 shrink-0 place-items-center overflow-hidden text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground",
+        "relative grid size-8 shrink-0 place-items-center overflow-hidden text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground disabled:cursor-wait disabled:opacity-70",
         className
       )}
     >

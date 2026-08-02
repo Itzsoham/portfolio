@@ -1,6 +1,6 @@
 # Soham Maury — Portfolio
 
-[sohammaury.me](https://sohammaury.me) — a personal portfolio styled as a developer `README.md` rendered in a terminal: monospace meta-text for the shell (breadcrumbs, footer, tags), large sans headings for content, a functional `⌘K` command palette, and no CMS — every piece of content lives in one file.
+[itzsoham.vercel.app](https://itzsoham.vercel.app) — a personal portfolio styled as a developer `README.md` rendered in a terminal: monospace meta-text for the shell (breadcrumbs, footer, tags), large sans headings for content, a functional `⌘K` command palette, and no CMS — every piece of content lives in one file.
 
 ## Features
 
@@ -26,12 +26,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-| Script | Does |
-|---|---|
-| `npm run dev` | Dev server with Turbopack |
-| `npm run build` | Production build |
+| Script          | Does                       |
+| --------------- | -------------------------- |
+| `npm run dev`   | Dev server with Turbopack  |
+| `npm run build` | Production build           |
 | `npm run start` | Serve the production build |
-| `npm run lint` | ESLint |
+| `npm run lint`  | ESLint                     |
 
 ## Project structure
 
@@ -76,10 +76,10 @@ Drop a résumé PDF in `/public` and set `Site.resume` to its path to light up t
 
 Copy `.env.example` to `.env.local`. Everything is optional — the site runs fine with none of it set:
 
-| Variable | Required for | Fallback if unset |
-|---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | canonical URLs, OG tags, sitemap | `https://sohammaury.me` (hardcoded in `constants/index.ts`) |
-| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | real visitor counter | static `Site.visitorCount` number in the footer |
+| Variable                                              | Required for                     | Fallback if unset                                                 |
+| ----------------------------------------------------- | -------------------------------- | ----------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`                                | canonical URLs, OG tags, sitemap | `https://itzsoham.vercel.app` (hardcoded in `constants/index.ts`) |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | real visitor counter             | static `Site.visitorCount` number in the footer                   |
 
 ### Wiring up the visitor counter
 
