@@ -14,7 +14,7 @@ export default function ResourcesCard({
   return (
     <Link
       href={link}
-      className="group relative block w-full border border-border/70 bg-card p-5 transition-colors hover:bg-muted/15"
+      className="group relative block w-full border-b border-border/70 p-5 transition-colors hover:bg-muted/15 last:border-b-0"
       {...rest}
       target="_blank"
       rel="noopener noreferrer"

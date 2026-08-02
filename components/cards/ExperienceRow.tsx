@@ -14,10 +14,14 @@ const ExperienceRow = ({ entry }: { entry: ExperienceEntry }) => {
     entry;
 
   return (
-    <div className="group relative grid grid-cols-1 gap-x-6 gap-y-2 border-b border-border/70 p-5 transition-colors hover:bg-muted/15 last:border-b-0 sm:grid-cols-[136px_1fr]">
+    <div className="group relative grid grid-cols-1 gap-x-6 gap-y-2 border-b border-border/70 p-5 transition-colors hover:bg-muted/5 last:border-b-0 sm:grid-cols-[136px_1fr]">
       {/* Hover corner borders: Top-Left & Bottom-Right */}
       <span aria-hidden className="pointer-events-none absolute top-0 left-0 size-3 border-t-2 border-l-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
       <span aria-hidden className="pointer-events-none absolute bottom-0 right-0 size-3 border-b-2 border-r-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+      {/* Added missing top-right corner */}
+      <span aria-hidden className="pointer-events-none absolute top-0 right-0 size-3 border-t-2 border-r-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+      {/* Added missing bottom-left corner */}
+      <span aria-hidden className="pointer-events-none absolute bottom-0 left-0 size-3 border-b-2 border-l-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
       <div className="font-mono text-xs text-muted-foreground">
         <div className="tabular-nums">
