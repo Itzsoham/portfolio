@@ -3,7 +3,6 @@ import type React from "react";
 
 import {
   GitHubIcon,
-  LeetCodeIcon,
   LinkedInIcon,
   XIcon,
 } from "@/components/ui/brand-icons";
@@ -68,12 +67,6 @@ export const Socials: SocialLink[] = [
     url: "https://x.com/sohammaury",
     icon: XIcon,
     color: "#000000",
-  },
-  {
-    name: "LeetCode",
-    url: "https://leetcode.com/itzsoham/",
-    icon: LeetCodeIcon,
-    color: "#FFA116",
   },
   {
     name: "Email",

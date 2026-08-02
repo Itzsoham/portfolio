@@ -4,14 +4,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { flushSync } from "react-dom";
+import { performThemeTransition } from "@/lib/notch";
 import { cn } from "@/lib/utils";
 
 /**
- * Theme switch. The incoming theme cross-fades and slides into place via the
- * browser's View Transitions API. Browsers without `startViewTransition`, and
- * anyone who asked for reduced motion, just get the instant swap; the icon
- * still animates either way.
+ * Theme switch. The incoming theme cross-fades and sweeps into place via the
+ * browser's View Transitions API using navbar (top-to-bottom) and footer (bottom-to-top) notch silhouettes.
  */
 
 const ThemeToggle = ({ className }: { className?: string }) => {
@@ -26,29 +24,13 @@ const ThemeToggle = ({ className }: { className?: string }) => {
   const isDark = resolvedTheme === "dark";
 
   const toggle = async () => {
-    // A View Transition owns the root pseudo-elements until it finishes. Starting
-    // another one while those snapshots are still animating leaves the two theme
-    // states stacked on top of each other, so ignore repeat clicks for one sweep.
     if (isTransitioning) return;
 
     const next = isDark ? "light" : "dark";
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (reduced || !document.startViewTransition) {
-      setTheme(next);
-      return;
-    }
-
     setIsTransitioning(true);
 
     try {
-      // flushSync so the DOM already carries the new theme when the snapshot is taken
-      const transition = document.startViewTransition(() => {
-        flushSync(() => setTheme(next));
-      });
-      await transition.finished;
+      await performThemeTransition(next, setTheme);
     } finally {
       setIsTransitioning(false);
     }

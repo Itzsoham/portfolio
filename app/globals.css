@@ -30,8 +30,9 @@
     --chart-5: 27 87% 67%;
     --radius: 0rem; /* the whole shell is square — see the border-radius reset below */
 
-    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code",
-      Menlo, Consolas, monospace;
+    --font-mono:
+      ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", Menlo,
+      Consolas, monospace;
   }
   .dark {
     --background: 20 14% 4%; /* #0c0a09 near-black warm */
@@ -111,14 +112,19 @@
   }
 }
 
-/* Theme switch — keep the browser View Transition, but animate the old and new
-   snapshots with a simple fade + slide so the motion stays smooth and seam-free. */
+/* Theme switch — View Transition root elements set up for notch/footer clip-path sweeps */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 ::view-transition-old(root) {
-  animation: theme-out 220ms cubic-bezier(0.2, 0, 0, 1) both;
+  z-index: 1;
 }
 
 ::view-transition-new(root) {
-  animation: theme-in 320ms cubic-bezier(0.65, 0, 0.35, 1) both;
+  z-index: 9999;
 }
 
 @layer components {

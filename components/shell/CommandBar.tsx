@@ -15,6 +15,7 @@ import {
 import { createPortal } from "react-dom";
 
 import { Links, Socials } from "@/constants";
+import { performThemeTransition } from "@/lib/notch";
 
 type CommandItem = {
   group: string;
@@ -74,7 +75,7 @@ const CommandBar = () => {
         icon:
           theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />,
         run: () => {
-          setTheme(theme === "dark" ? "light" : "dark");
+          performThemeTransition(theme === "dark" ? "light" : "dark", setTheme);
           return false;
         },
       },

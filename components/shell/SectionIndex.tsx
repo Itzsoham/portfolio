@@ -47,13 +47,25 @@ const SectionIndex = () => {
     const measure = () => {
       frame = 0;
 
-      // current = the last heading that has crossed the line; before the first
-      // one crosses, nothing is highlighted
+      const viewportHeight = window.innerHeight;
+      const line = Math.min(320, viewportHeight * 0.45);
+      const isAtBottom =
+        window.scrollY + viewportHeight >=
+        document.documentElement.scrollHeight - 50;
+
       let current: string | null = null;
-      for (const s of sections) {
-        const el = document.getElementById(s.id);
-        if (el && el.getBoundingClientRect().top <= LINE) current = s.id;
+
+      if (isAtBottom) {
+        current = sections[sections.length - 1].id;
+      } else {
+        for (const s of sections) {
+          const el = document.getElementById(s.id);
+          if (el && el.getBoundingClientRect().top <= line) {
+            current = s.id;
+          }
+        }
       }
+
       setActiveId(current ?? sections[0].id);
 
       const scrollable =

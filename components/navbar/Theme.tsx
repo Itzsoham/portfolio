@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
+import { performThemeTransition } from "@/lib/notch";
 
 const Theme = () => {
   const { theme, setTheme } = useTheme();
@@ -18,7 +19,7 @@ const Theme = () => {
       aria-label="Toggle Dark Mode"
       type="button"
       className="group bg-white/90 px-3 py-2 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm transition dark:bg-zinc-900/90 dark:ring-blue-500/50 dark:hover:ring-white/20"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => performThemeTransition(theme === "dark" ? "light" : "dark", setTheme)}
     >
       {mounted && (
         <svg
