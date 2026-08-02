@@ -116,7 +116,7 @@ export interface ExperienceEntry {
 export const Experience: ExperienceEntry[] = [
   {
     company: "Neminath Technologies",
-    href: "https://neminathtech.com",
+    href: "https://neminathtechnologies.com/",
     location: "Ahmedabad, India",
     title: "Frontend Lead",
     start: "May 2025",
