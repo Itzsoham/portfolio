@@ -79,10 +79,7 @@ const NotchNavbar = () => {
 
         {/* the notch itself — sized by its content. `data-notch` lets the theme
             sweep measure this slice and cut its edge to the same silhouette. */}
-        <div
-          data-notch
-          className="relative z-10 -ml-px flex h-16 shrink-0"
-        >
+        <div data-notch className="relative z-10 -ml-px flex h-16 shrink-0">
           {/* left concave corner */}
           <div className="relative h-full w-12.5 shrink-0">
             <div
@@ -147,7 +144,7 @@ const NotchNavbar = () => {
                             stiffness: 420,
                             damping: 34,
                           }}
-                          className="absolute inset-x-0 -bottom-0.5 h-[3px] bg-accent shadow-[0_0_10px_hsl(var(--accent)/0.7)]"
+                          className="absolute inset-x-0 -bottom-0.5 h-0.75 bg-accent shadow-[0_0_10px_hsl(var(--accent)/0.7)]"
                         />
                       )}
                     </Link>
