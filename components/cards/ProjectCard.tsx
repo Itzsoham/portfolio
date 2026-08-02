@@ -31,7 +31,7 @@ export default function ProjectCard({
     typeof index === "number" ? String(index + 1).padStart(2, "0") : null;
 
   return (
-    <div className="group relative border-b border-border/70 p-5 transition-colors hover:bg-muted/30 last:border-b-0">
+    <div className="group relative border-b border-border/70 p-5 transition-colors hover:bg-muted/15 last:border-b-0">
       {/* All four hover corner borders for Project card */}
       <span aria-hidden className="pointer-events-none absolute top-0 left-0 size-3 border-t-2 border-l-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
       <span aria-hidden className="pointer-events-none absolute top-0 right-0 size-3 border-t-2 border-r-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
