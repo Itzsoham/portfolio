@@ -236,6 +236,7 @@ export const Projects: ProjectEntry[] = [
       "Better Auth",
       "Razorpay",
     ],
+    codeHref: "https://github.com/Itzsoham/operato",
     category: "AI",
   },
   {
@@ -244,12 +245,12 @@ export const Projects: ProjectEntry[] = [
     description:
       "Full-stack scheduling and billing platform built with tRPC and Prisma — timezone-aware lesson scheduling, attendance and payment tracking, and a live earnings dashboard. In active use by a piano teacher for 4+ months.",
     tags: ["Next.js", "TypeScript", "tRPC", "Prisma", "PostgreSQL"],
+    codeHref: "https://github.com/Itzsoham/my-piano-diary",
     category: "Web",
   },
   {
     title: "Skillza",
-    tagline:
-      "Course creation & purchasing platform for instructors and students",
+    tagline: "Course creation & purchasing platform for instructors and students",
     description:
       "Learning management platform with instructor course creation, student purchasing, AWS-powered media storage, and course dashboards.",
     tags: [
@@ -262,15 +263,104 @@ export const Projects: ProjectEntry[] = [
       "DynamoDB",
       "Clerk",
     ],
+    codeHref: "https://github.com/Itzsoham/skillza",
     category: "Web",
   },
   {
-    title: "The Royal Stay",
-    tagline: "Booking, cabin admin & guest reservations across two portals",
+    title: "MachIq",
+    tagline: "AI resume & cover letter generator from a job description",
     description:
-      "Full-stack hotel management platform featuring booking management, cabin administration, and customer reservations across admin and client portals.",
+      "Generate ATS‑friendly resumes, tailored cover letters and outreach emails using Gemini AI. Sends results via email using Gmail SMTP.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Gemini API",
+      "Nodemailer",
+      "pdf-parse",
+      "react-pdf",
+    ],
+    codeHref: "https://github.com/Itzsoham/matchiq",
+    category: "AI",
+  },
+  {
+    title: "The Royal Stay — Client",
+    tagline: "Guest‑facing hotel booking portal",
+    description:
+      "Browse cabins/rooms and manage your own reservations with a sleek UI powered by NextAuth and React Query.",
     liveHref: "https://royalstay.vercel.app/",
     tags: ["Next.js", "TypeScript", "NextAuth", "React Query", "Tailwind CSS"],
+    codeHref: "https://github.com/Itzsoham/royal-stay-client",
+    category: "Web",
+  },
+  {
+    title: "The Royal Stay — Admin",
+    tagline: "Admin panel for hotel operations",
+    description:
+      "Companion dashboard to manage cabins, bookings, and reservations across the property.",
+    tags: ["React", "Vite", "JavaScript"],
+    codeHref: "https://github.com/Itzsoham/royal-stay",
+    category: "Web",
+  },
+  {
+    title: "Trackio",
+    tagline: "Cloud‑deployed project management tool",
+    description:
+      "Task and project tracking platform with Cognito‑based authentication and multi‑tenant support, hosted on AWS.",
+    tags: [
+      "Next.js 15",
+      "Prisma",
+      "Node.js",
+      "PostgreSQL",
+      "AWS Cognito",
+      "AWS EC2",
+      "Tailwind CSS",
+    ],
+    codeHref: "https://github.com/Itzsoham/trackio",
+    category: "Web",
+  },
+  {
+    title: "Finex",
+    tagline: "Multi‑company expense management system",
+    description:
+      "Track and manage expenses across multiple companies from a single dashboard.",
+    tags: ["React", "Vite", "JavaScript"],
+    codeHref: "https://github.com/Itzsoham/finex-main",
+    category: "Web",
+  },
+  {
+    title: "Luxara",
+    tagline: "E‑commerce platform with admin panel",
+    description:
+      "Full‑stack storefront paired with an admin UI for product and order management.",
+    tags: ["React", "Vite", "JavaScript"],
+    codeHref: "https://github.com/Itzsoham/luxara-old",
+    category: "Web",
+  },
+  {
+    title: "Spin & Win",
+    tagline: "Gamified discount widget",
+    description:
+      "Embeddable spin‑the‑wheel interaction that reveals discount codes.",
+    tags: ["JavaScript", "HTML/CSS"],
+    codeHref: "https://github.com/Itzsoham/spin-win",
+    category: "Web",
+  },
+  {
+    title: "Pizza Club",
+    tagline: "Food ordering practice app",
+    description:
+      "Pizza ordering flow with menu, cart, and checkout experience.",
+    tags: ["React", "Vite"],
+    codeHref: "https://github.com/Itzsoham/pizza-club",
+    category: "Web",
+  },
+  {
+    title: "SaaS Landing Page",
+    tagline: "Collection of SaaS landing page designs",
+    description:
+      "Polished SaaS‑style landing pages built with conversion‑focused UI.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    codeHref: "https://github.com/Itzsoham/landing-page",
     category: "Web",
   },
 ];
