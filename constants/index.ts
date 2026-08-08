@@ -342,6 +342,7 @@ export const Projects: ProjectEntry[] = [
     description:
       "Embeddable spin‑the‑wheel interaction that reveals discount codes.",
     tags: ["JavaScript", "HTML/CSS"],
+    liveHref: "https://spin-win-discount.vercel.app",
     codeHref: "https://github.com/Itzsoham/spin-win",
     category: "Web",
   },
