@@ -37,7 +37,7 @@ export const Site = {
    */
   resume: null as string | null,
   visitorCount: 1024, // static placeholder — swap for a real Supabase/KV count later
-  avatar: "/avatar6.png",
+  avatar: "/avatar7.png",
   builtWith: ["Next.js", "Tailwind", "Supabase"],
 };
 
