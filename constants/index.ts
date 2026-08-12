@@ -1,11 +1,7 @@
 import { BookMarked, FolderGit2, House, Mail } from "lucide-react";
 import type React from "react";
 
-import {
-  GitHubIcon,
-  LinkedInIcon,
-  XIcon,
-} from "@/components/ui/brand-icons";
+import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/ui/brand-icons";
 
 type SocialIcon = React.ComponentType<{ className?: string }>;
 
@@ -250,7 +246,8 @@ export const Projects: ProjectEntry[] = [
   },
   {
     title: "Skillza",
-    tagline: "Course creation & purchasing platform for instructors and students",
+    tagline:
+      "Course creation & purchasing platform for instructors and students",
     description:
       "Learning management platform with instructor course creation, student purchasing, AWS-powered media storage, and course dashboards.",
     tags: [
