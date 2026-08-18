@@ -233,6 +233,7 @@ export const Projects: ProjectEntry[] = [
       "Razorpay",
     ],
     codeHref: "https://github.com/Itzsoham/operato",
+    liveHref: "https://operato-ai.vercel.app/",
     category: "AI",
   },
   {
