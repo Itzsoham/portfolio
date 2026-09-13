@@ -32,7 +32,7 @@ export const Site = {
    * and it lights up in the hero and the sidebar card.
    */
   resume: null as string | null,
-  visitorCount: 1024, // static placeholder — swap for a real Supabase/KV count later
+  visitorCount: 9_999, // fallback displayed until the live Redis count is returned
   avatar: "/avatar7.png",
   builtWith: ["Next.js", "Tailwind", "Supabase"],
 };
@@ -114,11 +114,11 @@ export const Experience: ExperienceEntry[] = [
     company: "Neminath Technologies",
     href: "https://neminathtechnologies.com/",
     location: "Ahmedabad, India",
-    title: "Frontend Lead",
+    title: "Full Stack Developer",
     start: "May 2025",
     end: null,
     description:
-      "Leading frontend development across 6+ enterprise applications — Task Management, HRM, CRM, Recruitment, and Audit platforms — serving 1,000+ active users across multiple organizations.",
+      "Leading full-stack development across 6+ enterprise applications — Task Management, HRM, CRM, Recruitment, and Audit platforms — building scalable frontend experiences and backend services for 1,000+ active users across multiple organizations.",
     bullets: [
       "Architected Micro-Frontend modules and created 50+ reusable UI components, form builders, dashboards, and workflow modules, accelerating feature delivery across multiple products.",
       "Built a Claude Code prompt kit with adversarial review subagents and PreToolUse hooks to autonomously generate an invoice print template system, and set up CLAUDE.md scaffolding across the monorepo's backend services.",
@@ -129,6 +129,8 @@ export const Experience: ExperienceEntry[] = [
       "React.js",
       "Next.js",
       "TypeScript",
+      "Node.js",
+      "Prisma",
       "Micro-Frontends",
       "Playwright",
       "Claude Code",
@@ -243,6 +245,7 @@ export const Projects: ProjectEntry[] = [
       "Full-stack scheduling and billing platform built with tRPC and Prisma — timezone-aware lesson scheduling, attendance and payment tracking, and a live earnings dashboard. In active use by a piano teacher for 4+ months.",
     tags: ["Next.js", "TypeScript", "tRPC", "Prisma", "PostgreSQL"],
     codeHref: "https://github.com/Itzsoham/my-piano-diary",
+    liveHref: "https://my-piano-diary.vercel.app/",
     category: "Web",
   },
   {
@@ -285,7 +288,7 @@ export const Projects: ProjectEntry[] = [
     tagline: "Guest‑facing hotel booking portal",
     description:
       "Browse cabins/rooms and manage your own reservations with a sleek UI powered by NextAuth and React Query.",
-    liveHref: "https://royalstay.vercel.app/",
+    liveHref: "https://royal-stay.vercel.app/",
     tags: ["Next.js", "TypeScript", "NextAuth", "React Query", "Tailwind CSS"],
     codeHref: "https://github.com/Itzsoham/royal-stay-client",
     category: "Web",
@@ -295,6 +298,7 @@ export const Projects: ProjectEntry[] = [
     tagline: "Admin panel for hotel operations",
     description:
       "Companion dashboard to manage cabins, bookings, and reservations across the property.",
+    liveHref: "https://royalstay.vercel.app/",
     tags: ["React", "Vite", "JavaScript"],
     codeHref: "https://github.com/Itzsoham/royal-stay",
     category: "Web",
