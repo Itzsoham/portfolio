@@ -79,3 +79,7 @@ Audio: light ticks on chips, soft impact at 17.02
 Avatar, "Soham Maury" (18.52), `itzsoham.vercel.app`. The footer bar slides up: `// Built with Next.js, Tailwind; thanks();` · eye icon "You are the 9,999th visitor", which rolls to 10,000th at 20.02 with a bell. Hold.
 
 **Audio summary:** quiet intro under the typing, the beat lands exactly on the hero, tidy clicks through the files, and a bell on the 10,000th visitor as the music fades.
+
+## Revision — light → dark, louder mix
+- Scene 3 now ends with a cursor clicking the theme toggle (moon) at 10.52s. Dark panels sweep in from the top and bottom (the site's navbar/footer notch transition), the theme flips at 11.0s, and projects.md comes back in dark mode with the sun icon. Scenes 4–6 are dark.
+- Music bed set to 0.4 in the volume automation lane (the lane overrides data-volume, so the bed had been at full level and masked the SFX). Added per-character typing ticks, page-change slides, chip clicks, a sweep impact and a counter roll. Final audio is loudness-normalized to -14 LUFS.

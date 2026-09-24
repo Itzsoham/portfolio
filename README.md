@@ -4,7 +4,10 @@
 
 <p align="center">
   <a href="brag-output/brag.mp4">
-    <img src="brag-output/brag.jpg" alt="Soham Maury portfolio — watch the 22-second tour" width="720" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="brag-output/brag-dark.jpg" />
+      <img src="brag-output/brag.jpg" alt="Soham Maury portfolio — watch the 22-second tour, light and dark mode" width="720" />
+    </picture>
   </a>
   <br />
   <sub>▶️ <a href="brag-output/brag.mp4">Watch the 22-second tour</a></sub>
