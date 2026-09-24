@@ -2,6 +2,14 @@
 
 [itzsoham.vercel.app](https://itzsoham.vercel.app) — a personal portfolio styled as a developer `README.md` rendered in a terminal: monospace meta-text for the shell (breadcrumbs, footer, tags), large sans headings for content, a functional `⌘K` command palette, and no CMS — every piece of content lives in one file.
 
+<p align="center">
+  <a href="brag-output/brag.mp4">
+    <img src="brag-output/brag.jpg" alt="Soham Maury portfolio — watch the 22-second tour" width="720" />
+  </a>
+  <br />
+  <sub>▶️ <a href="brag-output/brag.mp4">Watch the 22-second tour</a></sub>
+</p>
+
 ## Features
 
 - **Command palette** (`⌘K` / `Ctrl-K`) — jump to any page, open any social link, or toggle the theme without touching the mouse ([components/shell/CommandBar.tsx](components/shell/CommandBar.tsx))

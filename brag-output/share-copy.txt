@@ -1,0 +1,1 @@
+My portfolio is a README.md that renders itself: hit ⌘K, open the README, filter the projects down to AI, and maybe you're the 10,000th visitor. itzsoham.vercel.app
